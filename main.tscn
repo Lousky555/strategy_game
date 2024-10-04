@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq57klw1kgv54"]
+
+[ext_resource type="Script" path="res://gcode/main.gd" id="1_d1g38"]
+[ext_resource type="Texture2D" uid="uid://d07c1l75sk7yq" path="res://src/maps/High-Resolution-World-Map.png" id="1_de0x2"]
+[ext_resource type="PackedScene" uid="uid://pg48mmvinl2a" path="res://scenes/camera.tscn" id="3_bx6fc"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_d1g38")
+
+[node name="province_map" type="Sprite2D" parent="."]
+position = Vector2(95, 59)
+texture = ExtResource("1_de0x2")
+
+[node name="Camera" parent="." instance=ExtResource("3_bx6fc")]
+speed = 200

@@ -1,0 +1,4 @@
+{
+	"GER":{"name":"Germany","color":"#000000"},
+	"AUH":{"name":"Austria-Hungary","color":"#b9bcc2"}
+}
