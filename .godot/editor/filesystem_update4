@@ -1,11 +1,7 @@
 res://main.tscn
-res://geop_data/countries.txt
-res://geop_data/provinces.txt
-res://gcode/province.gd
-res://gcode/main.gd
 res://scenes/province.tscn
-res://gcode/country.gd
-res://gcode/province_area.gd
 res://scenes/province_area.tscn
 res://scenes/camera.tscn
-res://gcode/camera.gd
+res://gcode/province.gd
+res://gcode/sea_province.gd
+res://gcode/wasteland.gd

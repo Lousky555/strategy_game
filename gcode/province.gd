@@ -1,16 +1,20 @@
-class_name Province extends Node
+class_name Province extends Node2D
 
-@onready var province_area = $province_area
+@export var province_area:Province_Area
 var selected:bool = false
-var graphical_polygons:Array = Array()
+@export var graphical_polygons:Array = Array()
 
-func make_area(polygons, color) -> void:
+func _make_area(polygons, color:String) -> void:
+	province_area = Province_Area.new()
+	province_area.setup()
+	
 	for polygon in polygons:
 		var province_polygon:CollisionPolygon2D = CollisionPolygon2D.new()
 		var graphical_polygon:Polygon2D = Polygon2D.new()
 		province_polygon.polygon = polygon
 		graphical_polygon.polygon = polygon
 		graphical_polygon.color = Color(color)
+		add_child(province_area)
 		province_area.add_child(province_polygon)
 		add_child(graphical_polygon)
 		graphical_polygons.append(graphical_polygon)
@@ -30,5 +34,5 @@ func deselect() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc") or (event.is_action_pressed("select") and !province_area.mouse_inside):
 		deselect()
-	if event.is_action("select") and province_area.mouse_inside:
+	if event.is_action_pressed("select") and province_area.mouse_inside:
 		select()

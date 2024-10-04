@@ -1,7 +1,9 @@
 {
-"1ff329":{"name":"Czechia","id":"1","country":"AUH"},
-"#463ef3":{"name":"Bavaria","id":"2","country":"GER"},
-"#2ad0c7":{"name":"Silesia","id":"3","country":"GER"},
-"#9f9cd5":{"name":"Austria","id":"4","country":"AUH"},
-"#d0b62a":{"name":"Slovakia","id":"5","country":"AUH"}
+"1ff329":{"name":"Czechia","id":"1","country":"AUH","terrain":"hills"},
+"#463ef3":{"name":"Bavaria","id":"2","country":"GER","terrain":"plains"},
+"#2ad0c7":{"name":"Silesia","id":"3","country":"GER","terrain":"hills"},
+"#9f9cd5":{"name":"Austria","id":"4","country":"AUH","terrain":"mountains"},
+"#d0b62a":{"name":"Slovakia","id":"5","country":"AUH","terrain":"plains"},
+"#d92926":{"name":"Tatry","id":"6","country":"AUH","terrain":"wasteland"},
+"#d726d9":{"name":"Hungary","id":"7","country":"AUH","terrain":"water"}
 }

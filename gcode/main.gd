@@ -37,11 +37,23 @@ func load_provinces(info:Dictionary) -> void:
 		var map:Image = province_map.texture.get_image()
 		var province_bitmap:BitMap = get_province_bitmap(map, Color(color))
 		var polygons:Array[PackedVector2Array] = province_bitmap.opaque_to_polygons(Rect2(Vector2(), province_bitmap.get_size()))
-		var province:Province = province_scene.instantiate()
+		
+		var province:Variant
+		match data[color]["terrain"]:
+			"hills":
+				province = Hills.new()
+			"mountains":
+				province = Mountain.new()
+			"plains":
+				province = Plains.new()
+			"water":
+				province = Sea.new()
+			"wasteland":
+				province = Wasteland.new()
 		
 		info[data[color]["country"]]["reference"].add_child(province)
 		province.name = data[color]["name"]
-		province.make_area(polygons, info[data[color]["country"]]["color"])
+		province._make_area(polygons, info[data[color]["country"]]["color"])
 
 func load_countries() -> Dictionary:
 	var data:Dictionary = import_file("res://geop_data/countries.txt")
