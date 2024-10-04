@@ -1,0 +1,6 @@
+Camera2D
+Area2D
+Polygon2D
+CollisionPolygon2D
+CollisionShape2D
+Sprite2D
