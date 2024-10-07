@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var province_map = $province_map
-var province_scene = preload("res://scenes/province.tscn")
 
 func import_file(filepath:String) -> Dictionary:
 	var file:FileAccess = FileAccess.open(filepath, FileAccess.READ)
@@ -42,10 +41,13 @@ func load_provinces(info:Dictionary) -> void:
 		match data[color]["terrain"]:
 			"hills":
 				province = Hills.new()
+				province.population = data[color]["population"]
 			"mountains":
 				province = Mountain.new()
+				province.population = data[color]["population"]
 			"plains":
 				province = Plains.new()
+				province.population = data[color]["population"]
 			"water":
 				province = Sea.new()
 			"wasteland":

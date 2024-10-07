@@ -1,7 +1,13 @@
+res://scenes/province_area.tscn
+res://gcode/time_manager.gd
 res://main.tscn
 res://scenes/province.tscn
-res://scenes/province_area.tscn
 res://scenes/camera.tscn
+res://geop_data/provinces.txt
 res://gcode/province.gd
-res://gcode/sea_province.gd
-res://gcode/wasteland.gd
+res://gcode/main.gd
+res://gcode/flat_province.gd
+res://gcode/hills_province.gd
+res://gcode/mountain_province.gd
+res://gcode/country.gd
+res://gcode/province_area.gd

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtycg0k8ukf0"]
-
-[ext_resource type="Script" path="res://gcode/province.gd" id="1_dw10i"]
-[ext_resource type="PackedScene" uid="uid://bovedo1ubjwk6" path="res://scenes/province_area.tscn" id="2_kjcgf"]
-
-[node name="Province" type="Node2D"]
-script = ExtResource("1_dw10i")
-
-[node name="province_area" parent="." instance=ExtResource("2_kjcgf")]

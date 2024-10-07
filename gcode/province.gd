@@ -31,8 +31,18 @@ func deselect() -> void:
 			polygon.color = polygon.color - Color(0.2, 0.2, 0.2) 
 		selected = false
 
+func _on_tick():
+	print("tick")
+
+func _on_longer_tick():
+	print("longer tick")
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc") or (event.is_action_pressed("select") and !province_area.mouse_inside):
 		deselect()
 	if event.is_action_pressed("select") and province_area.mouse_inside:
 		select()
+
+func _ready() -> void:
+	TimeManager.longer_tick.connect(_on_longer_tick)
+	TimeManager.tick.connect(_on_tick)
