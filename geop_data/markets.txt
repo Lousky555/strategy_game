@@ -1,0 +1,4 @@
+{
+	"Austrian Market":["AUH"],
+	"German Market":["GER"]
+}

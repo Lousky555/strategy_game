@@ -1,3 +1,7 @@
+ColorRect
+Panel
+MarginContainer
+CanvasLayer
 Camera2D
 Area2D
 Polygon2D

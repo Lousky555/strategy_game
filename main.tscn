@@ -16,6 +16,7 @@ texture = ExtResource("1_de0x2")
 speed = 200
 
 [node name="Water" type="Sprite2D" parent="."]
-position = Vector2(3.8147e-06, 2.38419e-07)
 scale = Vector2(246.25, 133.25)
 texture = ExtResource("4_gvfha")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

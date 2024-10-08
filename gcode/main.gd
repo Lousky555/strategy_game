@@ -64,13 +64,26 @@ func load_countries() -> Dictionary:
 	for tag:String in data:
 		var new_country:Country = Country.new()
 		new_country.name = data[tag]["name"]
+		new_country.qualifications = data[tag]["qualifications"]
 		add_child(new_country)
 		info_for_provinces.get_or_add(tag,{"reference":new_country,"color":data[tag]["color"]})
 	
 	return info_for_provinces
 
+func load_markets() -> Dictionary:
+	var data:Dictionary = import_file("res://geop_data/markets.txt")
+	var info_for_countries: Dictionary = Dictionary()
+	
+	for market_name: String in data:
+		var new_market: Market = Market.new()
+		new_market.name = market_name
+		info_for_countries.get_or_add(new_market,data[market_name])
+	
+	return info_for_countries
+
 func _ready() -> void:
-	var info = load_countries()
-	load_provinces(info)
+	var info_for_countries
+	var info_for_provinces = load_countries()
+	load_provinces(info_for_provinces)
 	
 	province_map.visible = false

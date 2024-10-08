@@ -1,3 +1,1 @@
-class_name Hills extends Province
-
-@export var population:int  
+class_name Hills extends PopulatedProvince

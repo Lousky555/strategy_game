@@ -32,10 +32,10 @@ func deselect() -> void:
 		selected = false
 
 func _on_tick():
-	print("tick")
+	pass
 
 func _on_longer_tick():
-	print("longer tick")
+	pass
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc") or (event.is_action_pressed("select") and !province_area.mouse_inside):

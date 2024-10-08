@@ -1,4 +1,4 @@
 {
-	"GER":{"name":"Germany","color":"#000000"},
-	"AUH":{"name":"Austria-Hungary","color":"#b9bcc2"}
+	"GER":{"name":"Germany","color":"#000000","qualifications":"180"},
+	"AUH":{"name":"Austria-Hungary","color":"#b9bcc2","qualifications":"170"}
 }

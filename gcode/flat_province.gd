@@ -1,3 +1,1 @@
-class_name Plains extends Province
-
-@export var population:int  
+class_name Plains extends PopulatedProvince
