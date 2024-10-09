@@ -1,6 +1,8 @@
 res://main.tscn
-res://gcode/main.gd
-res://scenes/camera.tscn
 res://gcode/market.gd
-res://geop_data/commodities.txt
-res://gcode/file_system.gd
+res://scenes/camera.tscn
+res://gcode/building.gd
+res://geop_data/provinces.txt
+res://gcode/province.gd
+res://gcode/farm.gd
+res://gcode/main.gd

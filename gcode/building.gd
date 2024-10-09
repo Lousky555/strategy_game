@@ -1,4 +1,5 @@
-class_name Building extends Object
+class_name Building extends Node
 
-@export var size: int 
-@export var population_per_level: int
+var population_per_level: int = 0
+
+@export var level: int 

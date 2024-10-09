@@ -41,6 +41,7 @@ func load_provinces(info:Dictionary) -> void:
 		info[data[color]["country"]]["reference"].add_child(province)
 		province.name = data[color]["name"]
 		province._make_area(polygons, info[data[color]["country"]]["color"])
+		province._make_buildings(data[color]["buildings"])
 
 func load_countries(info:Dictionary) -> Dictionary:
 	var data:Dictionary = FileSystem.import_file("res://geop_data/countries.txt")

@@ -19,6 +19,16 @@ func _make_area(polygons, color:String) -> void:
 		add_child(graphical_polygon)
 		graphical_polygons.append(graphical_polygon)
 
+func _make_buildings(data:Dictionary):
+	for building_name in data:
+		var new_building: Variant
+		match building_name:
+			"farm":
+				new_building = Farm.new()
+		
+		new_building.level = data[building_name]
+		add_child(new_building)
+
 func select() -> void:
 	if not selected:
 		for polygon in graphical_polygons:
