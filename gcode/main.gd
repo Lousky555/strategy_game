@@ -57,7 +57,7 @@ func load_provinces(info:Dictionary) -> void:
 		province.name = data[color]["name"]
 		province._make_area(polygons, info[data[color]["country"]]["color"])
 
-func load_countries() -> Dictionary:
+func load_countries(info:Dictionary) -> Dictionary:
 	var data:Dictionary = import_file("res://geop_data/countries.txt")
 	var info_for_provinces:Dictionary = {}
 	
@@ -65,7 +65,9 @@ func load_countries() -> Dictionary:
 		var new_country:Country = Country.new()
 		new_country.name = data[tag]["name"]
 		new_country.qualifications = data[tag]["qualifications"]
-		add_child(new_country)
+		for market:Market in info:
+			if tag in info[market]:
+				market.add_child(new_country)
 		info_for_provinces.get_or_add(tag,{"reference":new_country,"color":data[tag]["color"]})
 	
 	return info_for_provinces
@@ -78,12 +80,13 @@ func load_markets() -> Dictionary:
 		var new_market: Market = Market.new()
 		new_market.name = market_name
 		info_for_countries.get_or_add(new_market,data[market_name])
+		add_child(new_market)
 	
 	return info_for_countries
 
 func _ready() -> void:
-	var info_for_countries
-	var info_for_provinces = load_countries()
+	var info_for_countries = load_markets()
+	var info_for_provinces = load_countries(info_for_countries)
 	load_provinces(info_for_provinces)
 	
 	province_map.visible = false
