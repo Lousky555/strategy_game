@@ -2,21 +2,6 @@ extends Node2D
 
 @onready var province_map = $province_map
 
-func import_file(filepath:String) -> Dictionary:
-	var file:FileAccess = FileAccess.open(filepath, FileAccess.READ)
-	if file != null:
-		var dictionary:Dictionary = JSON.parse_string(file.get_as_text().replace("_", " "))
-		if dictionary != null:
-			return dictionary
-		else:
-			printerr("There is a mistake in some geopfile!")
-			get_tree().quit()
-			return Dictionary()
-	else :
-		printerr("Failed to open file: ", filepath)
-		get_tree().quit()
-		return Dictionary()
-
 func get_province_bitmap(map:Image, color:Color) -> BitMap:
 	var bitmap_image:Image = Image.create(map.get_width(), map.get_height(), false,Image.FORMAT_RGBA8)
 	
@@ -30,7 +15,7 @@ func get_province_bitmap(map:Image, color:Color) -> BitMap:
 	return province_bitmap
 
 func load_provinces(info:Dictionary) -> void:
-	var data:Dictionary = import_file("res://geop_data/provinces.txt") 
+	var data:Dictionary = FileSystem.import_file("res://geop_data/provinces.txt") 
 	
 	for color:String in data:
 		var map:Image = province_map.texture.get_image()
@@ -58,7 +43,7 @@ func load_provinces(info:Dictionary) -> void:
 		province._make_area(polygons, info[data[color]["country"]]["color"])
 
 func load_countries(info:Dictionary) -> Dictionary:
-	var data:Dictionary = import_file("res://geop_data/countries.txt")
+	var data:Dictionary = FileSystem.import_file("res://geop_data/countries.txt")
 	var info_for_provinces:Dictionary = {}
 	
 	for tag:String in data:
@@ -73,7 +58,7 @@ func load_countries(info:Dictionary) -> Dictionary:
 	return info_for_provinces
 
 func load_markets() -> Dictionary:
-	var data:Dictionary = import_file("res://geop_data/markets.txt")
+	var data:Dictionary = FileSystem.import_file("res://geop_data/markets.txt")
 	var info_for_countries: Dictionary = Dictionary()
 	
 	for market_name: String in data:
