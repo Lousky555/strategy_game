@@ -5,5 +5,20 @@ class_name Commodity extends Node
 @export var supply: int
 @export var demand: int
 
-var suppliers: Array
-var consumers: Array
+var current_amount: int = 0
+
+func buy(amount: int) -> int:
+	if (current_amount - amount) > 0:
+		current_amount -= amount
+		supply += amount
+		return amount * prize
+	else:
+		return 0
+
+func sell(amount: int) -> int:
+	if current_amount < 100:
+		current_amount += amount
+		supply += amount
+		return amount * prize
+	else:
+		return 0

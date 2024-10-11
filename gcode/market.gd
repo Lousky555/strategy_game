@@ -2,6 +2,29 @@ class_name Market extends Node
 
 var commodities: Dictionary
 
+func get_commodity(argument_name: String) -> Commodity:
+	for i in commodities:
+		if i == argument_name:
+			return commodities[i]
+		
+	printerr("Cant find commodity")
+	get_tree().quit()
+	return Commodity.new()
+
+func _on_make_demand(building: Variant, commodity_name: String, amount: int):
+	var commodity = get_commodity(commodity_name)
+	var money_spend = commodity.buy(amount)
+	
+
+func _on_make_supply(building: Variant, commodity_name: String, amount: int):
+	var commodity = get_commodity(commodity_name)
+	var money_gained = commodity.sell(amount)
+	
+	building.money += money_gained
+	if money_gained == 0:
+		return
+	building.inventory[commodity_name] -= amount
+
 func _ready() -> void:
 	var data = FileSystem.import_file("res://geop_data/commodities.txt")
 	
