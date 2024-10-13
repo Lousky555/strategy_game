@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 TimeManager="*res://gcode/time_manager.gd"
 FileSystem="*res://gcode/file_system.gd"
+OuterSpace="*res://gcode/outer_space.gd"
 
 [editor]
 

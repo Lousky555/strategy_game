@@ -7,7 +7,7 @@ const  LONGER_TICK_LENGHT = 3
 signal tick
 signal longer_tick
 
-func _on_timeout():
+func _on_timeout() -> void:
 	tick_counter += 1
 	tick.emit()
 	
@@ -15,7 +15,7 @@ func _on_timeout():
 		longer_tick.emit()
 		tick_counter = 0
 
-func _set_speed(value):
+func _set_speed(value) -> void:
 	wait_time = value
 	speed = value
 

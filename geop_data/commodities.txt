@@ -1,3 +1,4 @@
 {
-	"crop":{"prize":"4"}
+	"crop":{"prize":"4"},
+	"food":{"prize":"8"}
 }

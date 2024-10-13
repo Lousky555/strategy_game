@@ -19,12 +19,14 @@ func _make_area(polygons, color:String) -> void:
 		add_child(graphical_polygon)
 		graphical_polygons.append(graphical_polygon)
 
-func _make_buildings(data:Dictionary):
+func _make_buildings(data:Dictionary) -> void:
 	for building_name in data:
 		var new_building: Variant
 		match building_name:
 			"farm":
 				new_building = Farm.new()
+			"food-factory":
+				new_building = FoodFactory.new()
 		
 		new_building.level = data[building_name]
 		add_child(new_building)
@@ -41,18 +43,8 @@ func deselect() -> void:
 			polygon.color = polygon.color - Color(0.2, 0.2, 0.2) 
 		selected = false
 
-func _on_tick():
-	pass
-
-func _on_longer_tick():
-	pass
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc") or (event.is_action_pressed("select") and !province_area.mouse_inside):
 		deselect()
 	if event.is_action_pressed("select") and province_area.mouse_inside:
 		select()
-
-func _ready() -> void:
-	TimeManager.longer_tick.connect(_on_longer_tick)
-	TimeManager.tick.connect(_on_tick)
