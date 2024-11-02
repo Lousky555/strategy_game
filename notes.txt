@@ -1,0 +1,5 @@
+Pri pridavani noveho terenu je potreba jit do:
+province.gd
+province_screen.gd
+
+a vytvorit novou tridu

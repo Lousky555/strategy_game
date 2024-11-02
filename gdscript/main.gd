@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var province_map = $province_map
+@onready var province_screen = $CanvasLayer/ProvinceScreen
 
 func get_province_bitmap(map:Image, color:Color) -> BitMap:
 	var bitmap_image:Image = Image.create(map.get_width(), map.get_height(), false,Image.FORMAT_RGBA8)
@@ -37,6 +38,10 @@ func load_provinces(info:Dictionary) -> void:
 				province = Sea.new()
 			"wasteland":
 				province = Wasteland.new()
+		
+		if province is not Wasteland:
+			province.province_selected.connect(province_screen._on_province_selected)
+			province.province_deselected.connect(province_screen._on_province_deselected)
 		
 		info[data[color]["country"]]["reference"].add_child(province)
 		province.name = data[color]["name"]

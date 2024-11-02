@@ -1,12 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq57klw1kgv54"]
+[gd_scene load_steps=6 format=3 uid="uid://bq57klw1kgv54"]
 
-[ext_resource type="Script" path="res://gcode/main.gd" id="1_d1g38"]
+[ext_resource type="Script" path="res://gdscript/main.gd" id="1_d1g38"]
 [ext_resource type="Texture2D" uid="uid://d07c1l75sk7yq" path="res://src/maps/High-Resolution-World-Map.png" id="1_de0x2"]
 [ext_resource type="PackedScene" uid="uid://pg48mmvinl2a" path="res://scenes/camera.tscn" id="3_bx6fc"]
 [ext_resource type="Texture2D" uid="uid://bshii6b8q4mae" path="res://src/maps/water.png" id="4_gvfha"]
+[ext_resource type="Script" path="res://gdscript/province_screen.gd" id="5_vpy8m"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_d1g38")
+
+[node name="Water" type="Sprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+scale = Vector2(246.25, 133.25)
+texture = ExtResource("4_gvfha")
 
 [node name="province_map" type="Sprite2D" parent="."]
 position = Vector2(95, 59)
@@ -15,8 +22,51 @@ texture = ExtResource("1_de0x2")
 [node name="Camera" parent="." instance=ExtResource("3_bx6fc")]
 speed = 200
 
-[node name="Water" type="Sprite2D" parent="."]
-scale = Vector2(246.25, 133.25)
-texture = ExtResource("4_gvfha")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProvinceScreen" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+offset_top = 728.0
+offset_right = 254.0
+offset_bottom = 1051.0
+script = ExtResource("5_vpy8m")
+metadata/_edit_use_anchors_ = true
+
+[node name="ProvinceInfo" type="VBoxContainer" parent="CanvasLayer/ProvinceScreen"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="name" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Bavaria"
+
+[node name="TerrainBox" type="HBoxContainer" parent="CanvasLayer/ProvinceScreen/ProvinceInfo"]
+layout_mode = 2
+
+[node name="description" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo/TerrainBox"]
+layout_mode = 2
+text = "Terrain:"
+
+[node name="Terrain" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo/TerrainBox"]
+layout_mode = 2
+
+[node name="OwnerBox" type="HBoxContainer" parent="CanvasLayer/ProvinceScreen/ProvinceInfo"]
+layout_mode = 2
+
+[node name="descpription" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo/OwnerBox"]
+layout_mode = 2
+text = "Owned by:"
+
+[node name="Owner" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo/OwnerBox"]
+layout_mode = 2
+
+[node name="PopulationBox" type="HBoxContainer" parent="CanvasLayer/ProvinceScreen/ProvinceInfo"]
+layout_mode = 2
+
+[node name="descrption" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo/PopulationBox"]
+layout_mode = 2
+text = "Population:"
+
+[node name="Population" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo/PopulationBox"]
+layout_mode = 2

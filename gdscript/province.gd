@@ -4,6 +4,9 @@ class_name Province extends Node2D
 var selected:bool = false
 @export var graphical_polygons:Array = Array()
 
+signal province_selected(Province:Node2D)
+signal province_deselected(province_name:String)
+
 func _make_area(polygons, color:String) -> void:
 	province_area = Province_Area.new()
 	province_area.setup()
@@ -36,15 +39,19 @@ func select() -> void:
 		for polygon in graphical_polygons:
 			polygon.color = polygon.color + Color(0.2, 0.2, 0.2)
 		selected = true
+		province_selected.emit(self)
 
 func deselect() -> void:
 	if selected:
 		for polygon in graphical_polygons:
 			polygon.color = polygon.color - Color(0.2, 0.2, 0.2) 
 		selected = false
+		province_deselected.emit(name)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("esc") or (event.is_action_pressed("select") and !province_area.mouse_inside):
-		deselect()
 	if event.is_action_pressed("select") and province_area.mouse_inside:
 		select()
+	if event.is_action_pressed("esc") or (event.is_action_pressed("select") and !province_area.mouse_inside):
+		deselect()
+	
+		
