@@ -1,10 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq57klw1kgv54"]
+[gd_scene load_steps=15 format=3 uid="uid://bq57klw1kgv54"]
 
 [ext_resource type="Script" path="res://gdscript/main.gd" id="1_d1g38"]
 [ext_resource type="Texture2D" uid="uid://d07c1l75sk7yq" path="res://src/maps/High-Resolution-World-Map.png" id="1_de0x2"]
 [ext_resource type="PackedScene" uid="uid://pg48mmvinl2a" path="res://scenes/camera.tscn" id="3_bx6fc"]
 [ext_resource type="Texture2D" uid="uid://bshii6b8q4mae" path="res://src/maps/water.png" id="4_gvfha"]
-[ext_resource type="Script" path="res://gdscript/province_screen.gd" id="5_vpy8m"]
+[ext_resource type="Script" path="res://gdscript/UI/province_screen.gd" id="5_vpy8m"]
+[ext_resource type="Texture2D" uid="uid://cv8ddjbbjoj27" path="res://src/pause-button.svg" id="6_x5362"]
+[ext_resource type="Texture2D" uid="uid://duas7i1cxa1v4" path="res://src/play-button.svg" id="7_jam1b"]
+[ext_resource type="Script" path="res://gdscript/UI/pause_and_play_button.gd" id="8_h2ke4"]
+[ext_resource type="Script" path="res://gdscript/UI/first_speed_buttton.gd" id="9_3ruu1"]
+[ext_resource type="Script" path="res://gdscript/UI/second_speed_button.gd" id="10_mnsox"]
+[ext_resource type="Script" path="res://third_speed_button.gd" id="11_5v2h2"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_021e0"]
+size = Vector2(100, 100)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gquyk"]
+size = Vector2(100, 100)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mnfvc"]
+size = Vector2(100, 100)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_d1g38")
@@ -12,6 +27,7 @@ script = ExtResource("1_d1g38")
 [node name="Water" type="Sprite2D" parent="."]
 light_mask = 2
 visibility_layer = 2
+position = Vector2(1, 0)
 scale = Vector2(246.25, 133.25)
 texture = ExtResource("4_gvfha")
 
@@ -24,49 +40,81 @@ speed = 200
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ProvinceScreen" type="PanelContainer" parent="CanvasLayer"]
+[node name="AspectRatioContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ProvinceScreen" type="PanelContainer" parent="CanvasLayer/AspectRatioContainer"]
 visible = false
-offset_top = 728.0
-offset_right = 254.0
-offset_bottom = 1051.0
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 script = ExtResource("5_vpy8m")
 metadata/_edit_use_anchors_ = true
 
-[node name="ProvinceInfo" type="VBoxContainer" parent="CanvasLayer/ProvinceScreen"]
+[node name="ProvinceInfo" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="name" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo"]
+[node name="name" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Bavaria"
 
-[node name="TerrainBox" type="HBoxContainer" parent="CanvasLayer/ProvinceScreen/ProvinceInfo"]
+[node name="TerrainBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo"]
 layout_mode = 2
 
-[node name="description" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo/TerrainBox"]
+[node name="description" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo/TerrainBox"]
 layout_mode = 2
 text = "Terrain:"
 
-[node name="Terrain" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo/TerrainBox"]
+[node name="Terrain" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo/TerrainBox"]
 layout_mode = 2
 
-[node name="OwnerBox" type="HBoxContainer" parent="CanvasLayer/ProvinceScreen/ProvinceInfo"]
+[node name="OwnerBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo"]
 layout_mode = 2
 
-[node name="descpription" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo/OwnerBox"]
+[node name="descpription" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo/OwnerBox"]
 layout_mode = 2
 text = "Owned by:"
 
-[node name="Owner" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo/OwnerBox"]
+[node name="Owner" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo/OwnerBox"]
 layout_mode = 2
 
-[node name="PopulationBox" type="HBoxContainer" parent="CanvasLayer/ProvinceScreen/ProvinceInfo"]
+[node name="PopulationBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo"]
 layout_mode = 2
 
-[node name="descrption" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo/PopulationBox"]
+[node name="descrption" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo/PopulationBox"]
 layout_mode = 2
 text = "Population:"
 
-[node name="Population" type="Label" parent="CanvasLayer/ProvinceScreen/ProvinceInfo/PopulationBox"]
+[node name="Population" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo/PopulationBox"]
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="pause_and_play_button" type="TextureButton" parent="CanvasLayer/AspectRatioContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("6_x5362")
+texture_pressed = ExtResource("7_jam1b")
+script = ExtResource("8_h2ke4")
+
+[node name="first_speed_buttton" type="Button" parent="CanvasLayer/AspectRatioContainer/HBoxContainer"]
+layout_mode = 2
+icon = SubResource("PlaceholderTexture2D_021e0")
+script = ExtResource("9_3ruu1")
+
+[node name="second_speed_button" type="Button" parent="CanvasLayer/AspectRatioContainer/HBoxContainer"]
+layout_mode = 2
+icon = SubResource("PlaceholderTexture2D_gquyk")
+script = ExtResource("10_mnsox")
+
+[node name="third_speed_button" type="Button" parent="CanvasLayer/AspectRatioContainer/HBoxContainer"]
+layout_mode = 2
+icon = SubResource("PlaceholderTexture2D_mnfvc")
+script = ExtResource("11_5v2h2")

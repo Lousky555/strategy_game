@@ -1,5 +1,9 @@
-Label
+Button
 HBoxContainer
+MarginContainer
+AspectRatioContainer
+Container
+Label
 CanvasLayer
 HSplitContainer
 PanelContainer
@@ -7,8 +11,4 @@ Panel
 VBoxContainer
 Control
 ColorRect
-MarginContainer
 Camera2D
-Area2D
-Polygon2D
-CollisionPolygon2D

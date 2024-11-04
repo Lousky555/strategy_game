@@ -1,4 +1,14 @@
 {
 	"crop":{"prize":"4"},
-	"food":{"prize":"8"}
+	"food":{"prize":"8"},
+	"clothes":{"prize":"15"},
+	"leather":{"prize":"6"},
+	"army_goods":{"prize":"70"},
+	"electronics":{"prize":"50"},
+	"iron":{"prize":"10"},
+	"wood":{"prize":"5"},
+	"furniture":{"prize":"40"},
+	"building_materials":{"prize":"7"},
+	"steal":{"prize":"20"},
+	"coal":{"prize":"9"}
 }

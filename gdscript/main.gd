@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var province_map = $province_map
-@onready var province_screen = $CanvasLayer/ProvinceScreen
+@onready var province_screen = $CanvasLayer/AspectRatioContainer/ProvinceScreen
 
 func get_province_bitmap(map:Image, color:Color) -> BitMap:
 	var bitmap_image:Image = Image.create(map.get_width(), map.get_height(), false,Image.FORMAT_RGBA8)
