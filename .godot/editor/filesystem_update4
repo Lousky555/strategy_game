@@ -19,3 +19,8 @@ res://gdscript/buildings/coal_mine.gd
 res://gdscript/buildings/furniture_factory.gd
 res://gdscript/buildings/steel_mill.gd
 res://gdscript/province.gd
+res://gdscript/buildings/building.gd
+res://gdscript/buildings/lumber_mill.gd
+res://gdscript/buildings/textile_mill.gd
+res://gdscript/market.gd
+res://geop_data/provinces.txt

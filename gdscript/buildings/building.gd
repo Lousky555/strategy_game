@@ -4,6 +4,8 @@ var population_per_level: int = 0
 var market: Market
 var money: float = 20
 var inventory: Dictionary
+var needs:Array[String] = ["food","clothes","furniture","electronics"]
+
 
 @export var level: int 
 
@@ -18,6 +20,16 @@ func _on_tick() -> void:
 
 func _work() -> void:
 	pass
+
+func buy_needs(money_availible:float) -> void:
+	for need:String in needs:
+		if money_availible > market.get_commodity(need).prize:
+			make_demand.emit(self, need, 1) 
+			money_availible -= money_availible - market.get_commodity(need).prize
+		else:
+			continue
+	
+	return
 
 func _ready() -> void:
 	market = get_parent().get_parent().get_parent()

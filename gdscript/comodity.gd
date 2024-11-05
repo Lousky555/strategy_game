@@ -13,7 +13,8 @@ func buy(amount: float) -> float:
 		current_amount -= amount
 		return amount * prize
 	else:
-		return 0
+		current_amount = 0
+		return amount * prize
 
 func sell(amount: float) -> float:
 	supply += amount

@@ -1,13 +1,13 @@
 class_name FactoryBuilding extends Building
 
-var needs:Array
 var product:String
 var commodities_per_level:int
-var input_efficency:int
+var input_efficency:float
 var production_input:String
 
 func _on_tick() -> void:
 	if(money > 0):
+		buy_needs(money/2)
 		make_demand.emit(self, production_input, (money / market.get_commodity(production_input).prize))
 	_work()
 	make_supply.emit(self, product, inventory[product])

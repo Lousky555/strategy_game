@@ -19,6 +19,7 @@ func _on_make_demand(building: Variant, commodity_name: String, amount: float) -
 	if money_spend == 0:
 		return
 	building.inventory[commodity_name] +=  amount
+	
 
 func _on_make_supply(building: Variant, commodity_name: String, amount: float) -> void:
 	var commodity = get_commodity(commodity_name)
