@@ -1,8 +1,8 @@
 res://main.tscn
 res://scenes/camera.tscn
-res://gdscript/pause_and_play_button.gd
-res://gdscript/time_manager.gd
-res://gdscript/first_speed_buttton.gd
-res://gdscript/second_speed_button.gd
-res://third_speed_button.gd
-res://geop_data/commodities.txt
+res://gdscript/buildings/producer_building.gd
+res://gdscript/buildings/food_factory.gd
+res://gdscript/buildings/factory_building.gd
+res://gdscript/buildings/root_building.gd
+res://gdscript/buildings/farm.gd
+res://gdscript/comodity.gd

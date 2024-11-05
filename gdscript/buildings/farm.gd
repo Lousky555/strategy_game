@@ -1,14 +1,7 @@
-class_name Farm extends Building
+class_name Farm extends RootBuilding
  
-var commodities_per_level = 10
-
 func _init() -> void:
 	inventory = {"crop": 0}
+	commodities_per_level = 10
+	product = "crop"
 	
-func _on_tick() -> void:
-	_work()
-	make_supply.emit(self, "crop", inventory["crop"])
-	
-
-func _work() -> void:
-	inventory["crop"] = commodities_per_level * level

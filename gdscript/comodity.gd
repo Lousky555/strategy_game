@@ -8,17 +8,17 @@ class_name Commodity extends Node
 var current_amount: float = 0
 
 func buy(amount: float) -> float:
+	demand += amount
 	if (current_amount - amount) > 0:
 		current_amount -= amount
-		demand += amount
 		return amount * prize
 	else:
 		return 0
 
 func sell(amount: float) -> float:
-	if current_amount < 100:
+	supply += amount
+	if current_amount < 100 and prize > 0:
 		current_amount += amount
-		supply += amount
 		return amount * prize
 	else:
 		return 0
