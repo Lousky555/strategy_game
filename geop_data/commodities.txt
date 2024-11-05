@@ -5,7 +5,7 @@
 	"leather":{"prize":"6"},
 	"army_goods":{"prize":"70"},
 	"electronics":{"prize":"50"},
-	"iron":{"prize":"10"},
+	"metal":{"prize":"10"},
 	"wood":{"prize":"5"},
 	"furniture":{"prize":"40"},
 	"building_materials":{"prize":"7"},

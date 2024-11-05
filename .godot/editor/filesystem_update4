@@ -6,3 +6,16 @@ res://gdscript/buildings/factory_building.gd
 res://gdscript/buildings/root_building.gd
 res://gdscript/buildings/farm.gd
 res://gdscript/comodity.gd
+res://gdscript/buildings/pasture.gd
+res://gdscript/buildings/textile_mills.gd
+res://gdscript/buildings/iron_mines.gd
+res://gdscript/buildings/lumber_mills.gd
+res://gdscript/buildings/iron_mine.gd
+res://gdscript/buildings/arms_factory.gd
+res://geop_data/commodities.txt
+res://gdscript/buildings/metal_mine.gd
+res://gdscript/buildings/electronics_factory.gd
+res://gdscript/buildings/coal_mine.gd
+res://gdscript/buildings/furniture_factory.gd
+res://gdscript/buildings/steel_mill.gd
+res://gdscript/province.gd
