@@ -12,6 +12,9 @@ var needs:Array[String] = ["food","clothes","furniture","electronics"]
 signal make_demand(me: Variant, commodity: String, amount: int)
 signal make_supply(me: Variant, commodity: String, amount: int)
 
+#Trida ze které dědí všechny budovy. Neinicializovat! řeší se zde jenom potřeby všechno ostaní má na strosti FactoryBuilding nebo
+#RootBuilding
+
 func _make_inventory() -> Dictionary:
 	return Dictionary()
 

@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://gdscript/UI/pause_and_play_button.gd" id="8_h2ke4"]
 [ext_resource type="Script" path="res://gdscript/UI/first_speed_buttton.gd" id="9_3ruu1"]
 [ext_resource type="Script" path="res://gdscript/UI/second_speed_button.gd" id="10_mnsox"]
-[ext_resource type="Script" path="res://third_speed_button.gd" id="11_5v2h2"]
+[ext_resource type="Script" path="res://gdscript/third_speed_button.gd" id="11_5v2h2"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_021e0"]
 size = Vector2(100, 100)
@@ -27,7 +27,7 @@ script = ExtResource("1_d1g38")
 [node name="Water" type="Sprite2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(1, 0)
+position = Vector2(-2560, -40)
 scale = Vector2(246.25, 133.25)
 texture = ExtResource("4_gvfha")
 
@@ -44,6 +44,10 @@ speed = 200
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ProvinceScreen" type="PanelContainer" parent="CanvasLayer/AspectRatioContainer"]
 visible = false
@@ -118,3 +122,12 @@ script = ExtResource("10_mnsox")
 layout_mode = 2
 icon = SubResource("PlaceholderTexture2D_mnfvc")
 script = ExtResource("11_5v2h2")
+
+[node name="TabBar" type="TabBar" parent="CanvasLayer/AspectRatioContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+deselect_enabled = true
+tab_count = 2
+tab_0/title = "Market"
+tab_1/title = "Buildings"
+metadata/_edit_use_anchors_ = true

@@ -32,6 +32,8 @@ func _on_longer_tick() -> void:
 	prize = prize * (demand/supply)
 	supply = 0 
 	demand = 0
-
+	
+	if prize == 0:
+		prize = 0.01
 func _ready() -> void:
 	TimeManager.longer_tick.connect(_on_longer_tick)

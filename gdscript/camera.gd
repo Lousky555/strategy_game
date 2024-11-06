@@ -1,5 +1,7 @@
 extends Camera2D
 
+#Kamera hrace
+
 @export var speed:int = 100
 
 func _process(delta: float) -> void:

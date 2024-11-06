@@ -1,5 +1,6 @@
-Button
 HBoxContainer
+TabBar
+Button
 MarginContainer
 AspectRatioContainer
 Container
@@ -11,4 +12,3 @@ Panel
 VBoxContainer
 Control
 ColorRect
-Camera2D

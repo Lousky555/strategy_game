@@ -14,7 +14,7 @@ func _on_tick() -> void:
 
 func _work() -> void:
 	if inventory[production_input] >= level * commodities_per_level * input_efficency:
-		inventory[product] = level * commodities_per_level
+		inventory[product] += level * commodities_per_level
 		inventory[production_input] -= level * commodities_per_level * input_efficency
 	elif  inventory[production_input] > 0:
 		inventory[product] = inventory[production_input] / input_efficency
