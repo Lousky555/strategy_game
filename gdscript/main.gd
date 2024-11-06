@@ -61,6 +61,9 @@ func load_countries(info:Dictionary) -> Dictionary:
 			if tag in info[market]:
 				market.add_child(new_country)
 		info_for_provinces.get_or_add(tag,{"reference":new_country,"color":data[tag]["color"]})
+		
+		if tag == Player.country_tag:
+			Player.country = new_country
 	
 	return info_for_provinces
 

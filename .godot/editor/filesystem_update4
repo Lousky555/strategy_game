@@ -1,11 +1,6 @@
 res://main.tscn
-res://gdscript/buildings/electronics_factory.gd
-res://gdscript/buildings/arms_factory.gd
-res://geop_data/commodities.txt
-res://gdscript/buildings/steel_mill.gd
-res://gdscript/buildings/factory_building.gd
 res://scenes/camera.tscn
-res://gdscript/comodity.gd
-res://readme.md
-res://gdscript/buildings/building.gd
-res://gdscript/camera.gd
+res://gdscript/UI/top_line.gd
+res://gdscript/player.gd
+res://gdscript/main.gd
+res://gdscript/UI/country_ui.gd
