@@ -3,7 +3,8 @@ extends VBoxContainer
 @onready var country_name_label = $CountryName
 @onready var qualification_label = $QualificationsLabel/Qualifications
 
-func _ready() -> void:
-	
+func start():
 	country_name_label.text = Player.country.name
-	qualification_label.text = Player.country.qualifications
+	qualification_label.text = str(Player.country.qualifications)
+		
+		

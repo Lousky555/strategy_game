@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bq57klw1kgv54"]
+[gd_scene load_steps=18 format=3 uid="uid://bq57klw1kgv54"]
 
 [ext_resource type="Script" path="res://gdscript/main.gd" id="1_d1g38"]
 [ext_resource type="Texture2D" uid="uid://d07c1l75sk7yq" path="res://src/maps/High-Resolution-World-Map.png" id="1_de0x2"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://gdscript/third_speed_button.gd" id="11_5v2h2"]
 [ext_resource type="Script" path="res://gdscript/UI/top_line.gd" id="12_ob6ed"]
 [ext_resource type="Script" path="res://gdscript/UI/country_ui.gd" id="13_q6kvw"]
+[ext_resource type="Script" path="res://market_ui.gd" id="14_e45ri"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_021e0"]
 size = Vector2(100, 100)
@@ -46,8 +47,6 @@ speed = 200
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -128,12 +127,15 @@ script = ExtResource("11_5v2h2")
 [node name="TopLine" type="TabContainer" parent="CanvasLayer/AspectRatioContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-current_tab = 0
+size_flags_stretch_ratio = 0.0
 deselect_enabled = true
 script = ExtResource("12_ob6ed")
 
 [node name="Country" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine"]
+visible = false
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource("13_q6kvw")
 metadata/_tab_index = 0
 
@@ -153,6 +155,7 @@ layout_mode = 2
 [node name="Market" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine"]
 visible = false
 layout_mode = 2
+script = ExtResource("14_e45ri")
 metadata/_tab_index = 1
 
 [node name="Buildings" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine"]
@@ -162,3 +165,4 @@ metadata/_tab_index = 2
 
 [connection signal="mouse_entered" from="CanvasLayer/AspectRatioContainer/TopLine" to="CanvasLayer/AspectRatioContainer/TopLine" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/AspectRatioContainer/TopLine" to="CanvasLayer/AspectRatioContainer/TopLine" method="_on_mouse_exited"]
+[connection signal="visibility_changed" from="CanvasLayer/AspectRatioContainer/TopLine/Country" to="CanvasLayer/AspectRatioContainer/TopLine/Country" method="_on_visibility_changed"]

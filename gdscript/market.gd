@@ -2,6 +2,11 @@ class_name Market extends Node
 
 var commodities: Dictionary
 
+signal market_update(market:Market)
+
+func _update_market():
+	market_update.emit(self)
+
 func get_commodity(argument_name: String) -> Commodity:
 	for i in commodities:
 		if i == argument_name:
@@ -41,3 +46,5 @@ func _ready() -> void:
 		commodities.get_or_add(com_name, new_commodity)
 		OuterSpace.add_child(new_commodity)
 	
+	TimeManager.connect("longer_tick", _update_market)
+	market_update.emit(self)

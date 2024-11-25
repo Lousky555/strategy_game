@@ -1,6 +1,7 @@
 res://main.tscn
 res://scenes/camera.tscn
-res://gdscript/UI/top_line.gd
-res://gdscript/player.gd
-res://gdscript/main.gd
 res://gdscript/UI/country_ui.gd
+res://gdscript/UI/top_line.gd
+res://market_ui.gd
+res://gdscript/market.gd
+res://gdscript/main.gd

@@ -3,6 +3,9 @@ extends Node2D
 @onready var province_map = $province_map
 @onready var province_screen = $CanvasLayer/AspectRatioContainer/ProvinceScreen
 
+@onready var country_ui = $CanvasLayer/AspectRatioContainer/TopLine/Country
+@onready var market_ui = $CanvasLayer/AspectRatioContainer/TopLine/Market
+
 func get_province_bitmap(map:Image, color:Color) -> BitMap:
 	var bitmap_image:Image = Image.create(map.get_width(), map.get_height(), false,Image.FORMAT_RGBA8)
 	
@@ -79,9 +82,14 @@ func load_markets() -> Dictionary:
 	
 	return info_for_countries
 
+func init_ui():
+	country_ui.start()
+	market_ui.start()
+
 func _ready() -> void:
 	var info_for_countries = load_markets()
 	var info_for_provinces = load_countries(info_for_countries)
 	load_provinces(info_for_provinces)
 	
 	province_map.visible = false
+	init_ui()

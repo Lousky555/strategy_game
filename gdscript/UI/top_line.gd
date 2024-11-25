@@ -2,6 +2,9 @@ extends TabContainer
 
 var mouse_inside:bool = false
 
+func _ready() -> void:
+	current_tab = -1
+
 func _on_mouse_entered() -> void:
 	mouse_inside = true
 
