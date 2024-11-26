@@ -47,4 +47,3 @@ func _ready() -> void:
 		OuterSpace.add_child(new_commodity)
 	
 	TimeManager.connect("longer_tick", _update_market)
-	market_update.emit(self)

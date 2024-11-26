@@ -28,26 +28,37 @@ func _make_buildings(data:Dictionary) -> void:
 		match building_name:
 			"farm":
 				new_building = Farm.new()
+				new_building.name = "Farm"
 			"arms-factory":
 				new_building = ArmsFactory.new()
+				new_building.name = "Arms Factory"
 			"coal-mine":
 				new_building = CoalMine.new()
+				new_building.name = "Coal Mine"
 			"electronics-factory":
 				new_building = ElectronicsFactory.new()
+				new_building.name = "Electronics Factory"
 			"furniture-factory":
 				new_building = FurnitureFactory.new()
+				new_building.name = "Furniture Factory"
 			"lumber-mill":
 				new_building = LumberMill.new()
+				new_building.name = "Lumber Mill"
 			"food-factory":
 				new_building = FoodFactory.new()
+				new_building.name = "Food Factory"
 			"metal-mine":
 				new_building = MetalMine.new()
+				new_building.name = "Metal Mine"
 			"pasture":
 				new_building = Pasture.new()
+				new_building.name = "Pasture"
 			"steel-mill":
 				new_building = SteelMill.new()
+				new_building.name = "Steel Mill"
 			"textile-mill":
 				new_building = TextileMill.new()
+				new_building.name = "Textile Mill"
 		
 		new_building.level = data[building_name]
 		add_child(new_building)

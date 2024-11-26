@@ -1,7 +1,10 @@
 extends VBoxContainer
 
+#Optimalizovat pokud budou problémy s výkonem
+
 func start():
 	Player.country.get_parent().market_update.connect(_on_market_update)
+	_on_market_update(Player.country.get_parent())
 
 func _on_market_update(market:Market):
 	var children:Array = get_children()
@@ -14,15 +17,8 @@ func _on_market_update(market:Market):
 		var hbox: HBoxContainer = HBoxContainer.new()
 		add_child(hbox)
 		
-		var name_label: Label = Label.new()
-		hbox.add_child(name_label)
-		name_label.text = com.comodity_name.to_pascal_case()
-		
-		var separator_label: Label = Label.new()
-		hbox.add_child(separator_label)
-		separator_label.text = "|Prize:"
-		
-		var prize_label: Label = Label.new()
-		hbox.add_child(prize_label)
-		prize_label.text = str(com.prize)
+		hbox.add_child(UiMake.make_label(com.comodity_name.to_pascal_case()))
+		hbox.add_child(UiMake.make_label("Prize:"))
+		hbox.add_child(UiMake.make_label(str(com.prize)))
+
 		

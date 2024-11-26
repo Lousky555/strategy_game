@@ -10,10 +10,10 @@
 [ext_resource type="Script" path="res://gdscript/UI/pause_and_play_button.gd" id="8_h2ke4"]
 [ext_resource type="Script" path="res://gdscript/UI/first_speed_buttton.gd" id="9_3ruu1"]
 [ext_resource type="Script" path="res://gdscript/UI/second_speed_button.gd" id="10_mnsox"]
-[ext_resource type="Script" path="res://gdscript/third_speed_button.gd" id="11_5v2h2"]
+[ext_resource type="Script" path="res://gdscript/UI/third_speed_button.gd" id="11_5v2h2"]
 [ext_resource type="Script" path="res://gdscript/UI/top_line.gd" id="12_ob6ed"]
 [ext_resource type="Script" path="res://gdscript/UI/country_ui.gd" id="13_q6kvw"]
-[ext_resource type="Script" path="res://market_ui.gd" id="14_e45ri"]
+[ext_resource type="Script" path="res://gdscript/UI/market_ui.gd" id="14_e45ri"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_021e0"]
 size = Vector2(100, 100)
@@ -97,6 +97,9 @@ text = "Population:"
 [node name="Population" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo/PopulationBox"]
 layout_mode = 2
 
+[node name="Buildings" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo"]
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -128,11 +131,11 @@ script = ExtResource("11_5v2h2")
 layout_mode = 2
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
+current_tab = 0
 deselect_enabled = true
 script = ExtResource("12_ob6ed")
 
 [node name="Country" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -157,11 +160,6 @@ visible = false
 layout_mode = 2
 script = ExtResource("14_e45ri")
 metadata/_tab_index = 1
-
-[node name="Buildings" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
 
 [connection signal="mouse_entered" from="CanvasLayer/AspectRatioContainer/TopLine" to="CanvasLayer/AspectRatioContainer/TopLine" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/AspectRatioContainer/TopLine" to="CanvasLayer/AspectRatioContainer/TopLine" method="_on_mouse_exited"]

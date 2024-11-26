@@ -21,6 +21,7 @@ TimeManager="*res://gdscript/time_manager.gd"
 FileSystem="*res://gdscript/file_system.gd"
 OuterSpace="*res://gdscript/outer_space.gd"
 Player="*res://gdscript/player.gd"
+UiMake="*res://gdscript/ui_maker.gd"
 
 [editor]
 

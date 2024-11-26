@@ -1,9 +1,9 @@
+VBoxContainer
 TextureRect
 Control
 HBoxContainer
 Container
 Label
-VBoxContainer
 TabContainer
 ColorRect
 TabBar
@@ -12,4 +12,3 @@ MarginContainer
 AspectRatioContainer
 CanvasLayer
 HSplitContainer
-PanelContainer
