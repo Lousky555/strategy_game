@@ -7,6 +7,7 @@ extends Node2D
 @onready var market_ui = $CanvasLayer/AspectRatioContainer/TopLine/Market
 @onready var income_tax_ui = $CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer
 @onready var consuption_tax_ui = $CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax
+@onready var property_tax_ui = $CanvasLayer/AspectRatioContainer/TopLine/Country/PropertyTaxContainer
 
 func get_province_bitmap(map:Image, color:Color) -> BitMap:
 	var bitmap_image:Image = Image.create(map.get_width(), map.get_height(), false,Image.FORMAT_RGBA8)
@@ -89,6 +90,7 @@ func init_ui():
 	market_ui.start()
 	income_tax_ui.start()
 	consuption_tax_ui.start()
+	property_tax_ui.start()
 
 func _ready() -> void:
 	var info_for_countries = load_markets()

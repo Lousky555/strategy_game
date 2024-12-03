@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bq57klw1kgv54"]
+[gd_scene load_steps=21 format=3 uid="uid://bq57klw1kgv54"]
 
 [ext_resource type="Script" path="res://gdscript/main.gd" id="1_d1g38"]
 [ext_resource type="Texture2D" uid="uid://d07c1l75sk7yq" path="res://src/maps/High-Resolution-World-Map.png" id="1_de0x2"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://gdscript/UI/market_ui.gd" id="14_e45ri"]
 [ext_resource type="Script" path="res://gdscript/UI/income_tax_container.gd" id="14_hq156"]
 [ext_resource type="Script" path="res://gdscript/UI/consuption_tax_container.gd" id="15_dsgk7"]
+[ext_resource type="Script" path="res://gdscript/UI/property_tax_container.gd" id="16_ybmec"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_021e0"]
 size = Vector2(100, 100)
@@ -205,6 +206,29 @@ layout_mode = 2
 layout_mode = 2
 text = "plus_button"
 
+[node name="PropertyTaxContainer" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine/Country"]
+layout_mode = 2
+script = ExtResource("16_ybmec")
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/PropertyTaxContainer"]
+layout_mode = 2
+text = "Property tax:"
+
+[node name="MinusButton2" type="Button" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/PropertyTaxContainer"]
+layout_mode = 2
+text = "minus_button"
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/PropertyTaxContainer"]
+layout_mode = 2
+
+[node name="PlusButton" type="Button" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/PropertyTaxContainer"]
+layout_mode = 2
+text = "plus_button"
+
+[node name="PerLevelLabel" type="Label" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/PropertyTaxContainer"]
+layout_mode = 2
+text = "per level"
+
 [node name="Market" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine"]
 visible = false
 layout_mode = 2
@@ -216,3 +240,5 @@ metadata/_tab_index = 1
 [connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer/PlusButton" to="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer" method="_on_plus_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax/MinusButton" to="CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax" method="_on_minus_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax/PlusButton" to="CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax" method="_on_plus_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/PropertyTaxContainer/MinusButton2" to="CanvasLayer/AspectRatioContainer/TopLine/Country/PropertyTaxContainer" method="_on_minus_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/PropertyTaxContainer/PlusButton" to="CanvasLayer/AspectRatioContainer/TopLine/Country/PropertyTaxContainer" method="_on_plus_button_pressed"]

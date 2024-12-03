@@ -9,3 +9,5 @@ res://gdscript/UI/top_line.gd
 res://gdscript/market.gd
 res://gdscript/buildings/building.gd
 res://gdscript/buildings/factory_building.gd
+res://gdscript/UI/consuption_tax_container.gd
+res://gdscript/UI/property_tax_container.gd
