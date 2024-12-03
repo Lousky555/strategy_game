@@ -29,10 +29,13 @@ func _on_make_demand(building: Variant, commodity_name: String, amount: float) -
 func _on_make_supply(building: Variant, commodity_name: String, amount: float) -> void:
 	var commodity = get_commodity(commodity_name)
 	var money_gained = commodity.sell(amount)
+	var country:Country = building.get_parent().get_parent()
 	
-	building.money += money_gained
 	if money_gained == 0:
 		return
+	country.money += money_gained * country.income_tax_rate
+	money_gained -= money_gained * country.income_tax_rate
+	building.money += money_gained
 	building.inventory[commodity_name] -= amount
 
 func _ready() -> void:

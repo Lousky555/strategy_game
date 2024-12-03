@@ -1,8 +1,9 @@
 res://main.tscn
-res://market_ui.gd
-res://gdscript/market.gd
 res://scenes/camera.tscn
-res://gdscript/UI/market_ui.gd
+res://gdscript/country.gd
 res://gdscript/UI/province_screen.gd
-res://gdscript/province.gd
-res://gdscript/ui_maker.gd
+res://gdscript/UI/income_tax_container.gd
+res://gdscript/main.gd
+res://gdscript/UI/country_ui.gd
+res://gdscript/UI/top_line.gd
+res://gdscript/market.gd

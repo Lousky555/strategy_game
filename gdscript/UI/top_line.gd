@@ -2,15 +2,11 @@ extends TabContainer
 
 var mouse_inside:bool = false
 
+@onready var country_ui:VBoxContainer = $Country 
+
 func _ready() -> void:
 	current_tab = -1
 
-func _on_mouse_entered() -> void:
-	mouse_inside = true
-
-func _on_mouse_exited() -> void:
-	mouse_inside = false
-
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("select") and !mouse_inside:
+	if event.is_action_pressed("esc"):
 		current_tab = -1

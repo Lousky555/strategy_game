@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bq57klw1kgv54"]
+[gd_scene load_steps=19 format=3 uid="uid://bq57klw1kgv54"]
 
 [ext_resource type="Script" path="res://gdscript/main.gd" id="1_d1g38"]
 [ext_resource type="Texture2D" uid="uid://d07c1l75sk7yq" path="res://src/maps/High-Resolution-World-Map.png" id="1_de0x2"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://gdscript/UI/top_line.gd" id="12_ob6ed"]
 [ext_resource type="Script" path="res://gdscript/UI/country_ui.gd" id="13_q6kvw"]
 [ext_resource type="Script" path="res://gdscript/UI/market_ui.gd" id="14_e45ri"]
+[ext_resource type="Script" path="res://gdscript/UI/income_tax_container.gd" id="14_hq156"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_021e0"]
 size = Vector2(100, 100)
@@ -155,12 +156,41 @@ text = "Qualifications:"
 [node name="Qualifications" type="Label" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/QualificationsLabel"]
 layout_mode = 2
 
+[node name="Money" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine/Country"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/Money"]
+layout_mode = 2
+text = "Money availible:"
+
+[node name="Value" type="Label" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/Money"]
+layout_mode = 2
+
+[node name="IncomeTaxContainer" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine/Country"]
+layout_mode = 2
+script = ExtResource("14_hq156")
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer"]
+layout_mode = 2
+text = "Income tax:"
+
+[node name="MinusButton" type="Button" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer"]
+layout_mode = 2
+text = "minus_button"
+
+[node name="Precentage" type="Label" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer"]
+layout_mode = 2
+
+[node name="PlusButton" type="Button" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer"]
+layout_mode = 2
+text = "plus_button"
+
 [node name="Market" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine"]
 visible = false
 layout_mode = 2
 script = ExtResource("14_e45ri")
 metadata/_tab_index = 1
 
-[connection signal="mouse_entered" from="CanvasLayer/AspectRatioContainer/TopLine" to="CanvasLayer/AspectRatioContainer/TopLine" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/AspectRatioContainer/TopLine" to="CanvasLayer/AspectRatioContainer/TopLine" method="_on_mouse_exited"]
 [connection signal="visibility_changed" from="CanvasLayer/AspectRatioContainer/TopLine/Country" to="CanvasLayer/AspectRatioContainer/TopLine/Country" method="_on_visibility_changed"]
+[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer/MinusButton" to="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer" method="_on_minus_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer/PlusButton" to="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer" method="_on_plus_button_pressed"]

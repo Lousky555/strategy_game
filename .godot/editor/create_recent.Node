@@ -1,13 +1,13 @@
+Label
+HBoxContainer
+Button
 VBoxContainer
 TextureRect
 Control
-HBoxContainer
 Container
-Label
 TabContainer
 ColorRect
 TabBar
-Button
 MarginContainer
 AspectRatioContainer
 CanvasLayer
