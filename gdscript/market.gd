@@ -16,13 +16,18 @@ func get_commodity(argument_name: String) -> Commodity:
 	get_tree().quit()
 	return Commodity.new()
 
-func _on_make_demand(building: Variant, commodity_name: String, amount: float) -> void:
+func _on_make_demand(building: Variant, commodity_name: String, amount: float, need: bool = false) -> void:
 	var commodity = get_commodity(commodity_name)
 	var money_spend = commodity.buy(amount)
+	var country:Country = building.get_parent().get_parent()
 	
-	building.money -= money_spend
 	if money_spend == 0:
 		return
+	
+	if need:
+		country.money += money_spend * country.consuption_tax_rate
+	
+	building.money -= money_spend
 	building.inventory[commodity_name] +=  amount
 	
 

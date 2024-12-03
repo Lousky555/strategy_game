@@ -7,3 +7,5 @@ res://gdscript/main.gd
 res://gdscript/UI/country_ui.gd
 res://gdscript/UI/top_line.gd
 res://gdscript/market.gd
+res://gdscript/buildings/building.gd
+res://gdscript/buildings/factory_building.gd

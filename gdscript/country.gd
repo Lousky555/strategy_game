@@ -4,6 +4,7 @@ class_name Country extends Node2D
 @export var qualifications: float 
 
 @export var income_tax_rate:float = 0.15
+@export var consuption_tax_rate:float = 0.15
 @export var money:float = 100
 
 func _monthly_update() -> void:

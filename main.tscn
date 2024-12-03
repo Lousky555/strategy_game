@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bq57klw1kgv54"]
+[gd_scene load_steps=20 format=3 uid="uid://bq57klw1kgv54"]
 
 [ext_resource type="Script" path="res://gdscript/main.gd" id="1_d1g38"]
 [ext_resource type="Texture2D" uid="uid://d07c1l75sk7yq" path="res://src/maps/High-Resolution-World-Map.png" id="1_de0x2"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://gdscript/UI/country_ui.gd" id="13_q6kvw"]
 [ext_resource type="Script" path="res://gdscript/UI/market_ui.gd" id="14_e45ri"]
 [ext_resource type="Script" path="res://gdscript/UI/income_tax_container.gd" id="14_hq156"]
+[ext_resource type="Script" path="res://gdscript/UI/consuption_tax_container.gd" id="15_dsgk7"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_021e0"]
 size = Vector2(100, 100)
@@ -174,7 +175,7 @@ script = ExtResource("14_hq156")
 layout_mode = 2
 text = "Income tax:"
 
-[node name="MinusButton" type="Button" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer"]
+[node name="MinusButton2" type="Button" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer"]
 layout_mode = 2
 text = "minus_button"
 
@@ -185,6 +186,25 @@ layout_mode = 2
 layout_mode = 2
 text = "plus_button"
 
+[node name="ConsuptionTax" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine/Country"]
+layout_mode = 2
+script = ExtResource("15_dsgk7")
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax"]
+layout_mode = 2
+text = "Consuption tax:"
+
+[node name="MinusButton" type="Button" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax"]
+layout_mode = 2
+text = "minus_button"
+
+[node name="Precentage" type="Label" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax"]
+layout_mode = 2
+
+[node name="PlusButton" type="Button" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax"]
+layout_mode = 2
+text = "plus_button"
+
 [node name="Market" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine"]
 visible = false
 layout_mode = 2
@@ -192,5 +212,7 @@ script = ExtResource("14_e45ri")
 metadata/_tab_index = 1
 
 [connection signal="visibility_changed" from="CanvasLayer/AspectRatioContainer/TopLine/Country" to="CanvasLayer/AspectRatioContainer/TopLine/Country" method="_on_visibility_changed"]
-[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer/MinusButton" to="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer" method="_on_minus_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer/MinusButton2" to="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer" method="_on_minus_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer/PlusButton" to="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer" method="_on_plus_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax/MinusButton" to="CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax" method="_on_minus_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax/PlusButton" to="CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax" method="_on_plus_button_pressed"]
