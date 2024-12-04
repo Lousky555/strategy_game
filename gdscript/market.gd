@@ -38,7 +38,7 @@ func _on_make_supply(building: Variant, commodity_name: String, amount: float) -
 	
 	if money_gained == 0:
 		return
-	country.money += money_gained * country.income_tax_rate
+	country.pay_income_tax(money_gained * country.income_tax_rate)
 	money_gained -= money_gained * country.income_tax_rate
 	building.money += money_gained
 	building.inventory[commodity_name] -= amount

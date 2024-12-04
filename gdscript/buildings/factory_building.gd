@@ -7,14 +7,7 @@ var production_input:String
 
 func _on_tick() -> void:
 	if(money > 0):
-		if country.property_tax_rate * level >=  money:
-			country.money += money
-			money = 0
-			return
-		else:
-			country.money += country.property_tax_rate * level
-			money -= country.property_tax_rate * level
-		
+		property_tax_pay.emit(self)
 		buy_needs(money/2)
 		make_demand.emit(self, production_input, (money / market.get_commodity(production_input).prize))
 	_work()

@@ -7,6 +7,7 @@ var inventory: Dictionary
 var needs:Array[String] = ["food","clothes","furniture","electronics"]
 var country: Country
 
+signal property_tax_pay(building:Node)
 
 @export var level: int 
 
@@ -41,5 +42,6 @@ func _ready() -> void:
 	
 	make_supply.connect(market._on_make_supply)
 	make_demand.connect(market._on_make_demand)
+	property_tax_pay.connect(country._on_property_tax_pay)
 	
 	TimeManager.tick.connect(_on_tick)
