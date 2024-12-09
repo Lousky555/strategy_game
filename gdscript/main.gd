@@ -50,6 +50,8 @@ func load_provinces(info:Dictionary) -> void:
 			province.province_deselected.connect(province_screen._on_province_deselected)
 		
 		info[data[color]["country"]]["reference"].add_child(province)
+		if (province is not Wasteland) and (province is not Sea):
+			info[data[color]["country"]]["reference"].population += province.population
 		province.name = data[color]["name"]
 		province._make_area(polygons, info[data[color]["country"]]["color"])
 		if province is PopulatedProvince:
