@@ -10,6 +10,7 @@ class_name Country extends Node2D
 
 var monthly_income_tax_surplus:float = 0
 var monthly_consuption_tax_surplus:float = 0
+var monthly_propetry_tax_surplus:float = 0 
 
 func _monthly_update() -> void:
 	for province: Node2D in get_children():
@@ -30,8 +31,10 @@ func pay_consuption_tax(value:float):
 func _on_property_tax_pay(building:Node):
 		if property_tax_rate * building.level >=  building.money:
 			money += building.money
+			monthly_propetry_tax_surplus += building.money
 			building.money = 0
 			return
 		else:
 			money += property_tax_rate * building.level
+			monthly_propetry_tax_surplus += building.money
 			building.money -= property_tax_rate * building.level
