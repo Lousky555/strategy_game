@@ -8,7 +8,6 @@ var needs:Array[String] = ["food","clothes","furniture","electronics"]
 var country: Country
 
 signal property_tax_pay(building:Node)
-signal level_change(value:int)
 
 @export var level: int : set = _on_level_set
 
@@ -28,12 +27,12 @@ func _work() -> void:
 	pass
 
 func _on_level_set(value):
-	pass
+	level = value
 
 func buy_needs(money_availible:float) -> void:
 	for need:String in needs:
-		if money_availible > market.get_commodity(need).prize * (1 + country.consuption_tax_rate):
-			make_demand.emit(self, need, 1, true) 
+		if money_availible > market.get_commodity(need).prize * (1 + country.consuption_tax_rate) * level:
+			make_demand.emit(self, need, 1 * level, true) 
 			money_availible -= money_availible - market.get_commodity(need).prize * (1 + country.consuption_tax_rate)
 		else:
 			continue
@@ -47,5 +46,4 @@ func _ready() -> void:
 	make_supply.connect(market._on_make_supply)
 	make_demand.connect(market._on_make_demand)
 	property_tax_pay.connect(country._on_property_tax_pay)
-	level_change.connect(country._on_school_level_change)
 	TimeManager.tick.connect(_on_tick)

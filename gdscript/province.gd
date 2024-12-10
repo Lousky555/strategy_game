@@ -62,7 +62,6 @@ func _make_buildings(data:Dictionary) -> void:
 			"school":
 				new_building = School.new()
 				new_building.name = "School"
-				new_building.level_change.connect(get_parent()._on_school_level_change)
 		
 		new_building.level = data[building_name]
 		add_child(new_building)

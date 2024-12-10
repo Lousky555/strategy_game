@@ -14,16 +14,18 @@ func start():
 	qualification_label.text = str(Player.country.qualifications)
 	
 	TimeManager.tick.connect(_on_tick)
-	TimeManager.longer_tick.connect(_on_longer_tick)
+	Player.country.consuption_tax_sup_change.connect(_consuption_tax_sup_change)
+	Player.country.income_tax_sup_change.connect(_income_tax_sup_change)
+	Player.country.propery_tax_sup_change.connect(_propery_tax_sup_change)
 
 func _on_tick():
 	money_label.text = str(Player.country.money)
 
-func _on_longer_tick():
-	income_tax_surp.text = str(Player.country.monthly_income_tax_surplus)
-	consuption_tax_surp.text = str(Player.country.monthly_consuption_tax_surplus)
-	propery_tax_surp.text = str(Player.country.monthly_propetry_tax_surplus)
-	
-	Player.country.monthly_consuption_tax_surplus = 0
-	Player.country.monthly_income_tax_surplus = 0
-	Player.country.monthly_propetry_tax_surplus = 0
+func _consuption_tax_sup_change(value:float):
+	consuption_tax_surp.text = str(value)
+
+func _income_tax_sup_change(value:float):
+	income_tax_surp.text = str(value)
+
+func _propery_tax_sup_change(value:float):
+	propery_tax_surp.text = str(value)
