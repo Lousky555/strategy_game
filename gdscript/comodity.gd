@@ -25,15 +25,18 @@ func sell(amount: float) -> float:
 		return 0
 
 func _on_longer_tick() -> void:
-	if supply == 0:
+	if supply == 0 and demand == 0:
+		return
+	elif supply == 0:
 		prize = 100 * prize 
+		return
+	elif prize == 0:
+		prize = 0.01
 		return
 	
 	prize = prize * (demand/supply)
 	supply = 0 
 	demand = 0
 	
-	if prize == 0:
-		prize = 0.01
 func _ready() -> void:
 	TimeManager.longer_tick.connect(_on_longer_tick)
