@@ -37,7 +37,7 @@ func buy_needs(money_availible:float) -> void:
 		else:
 			continue
 	
-	return
+
 
 func _ready() -> void:
 	country = get_parent().get_parent()

@@ -18,11 +18,16 @@ func _on_tick() -> void:
 		buy_needs(money/2)
 		if !inventory["steel"] >= (1 - progress) * 100 * difficulty:
 			make_demand.emit(self, "steel", ((money / 2) / market.get_commodity("steel").prize))
-		if !inventory["woood"] >= (1 - progress) * 100 * difficulty:
+		if !inventory["wood"] >= (1 - progress) * 100 * difficulty:
 			make_demand.emit(self, "wood", (money / market.get_commodity("wood").prize))
 	_work()
 	if progress >= 1:
 		if expansion:
 			building.level += 1
+			queue_free()
 		else:
-			get_parent().add_child(building)
+			var instance = building.new()
+			instance.level = 1
+			instance.name = str(building)
+			get_parent().add_child(instance)
+			queue_free()

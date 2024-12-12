@@ -69,5 +69,9 @@ func _on_school_level_change(value:int):
 	total_school_level += value
 
 func _on_building_demands_money(building:Node):
-	money -= building.level * 10
-	building.money += building.level * 10
+	if building is not GovermentConstruction:
+		money -= building.level * 10
+		building.money += building.level * 10
+	else:
+		money -= building.difficulty * building.effectivness
+		building.money += building.difficulty * building.effectivness

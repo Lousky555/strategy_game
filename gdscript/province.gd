@@ -23,6 +23,10 @@ func _make_area(polygons, color:String) -> void:
 		graphical_polygons.append(graphical_polygon)
 
 func _make_buildings(data:Dictionary) -> void:
+	if name == "Czechia":
+			var con = GovermentConstruction.new(false, Pasture)
+			con.name = "Construction"
+			add_child(con)
 	for building_name in data:
 		var new_building: Variant
 		match building_name:
@@ -65,6 +69,8 @@ func _make_buildings(data:Dictionary) -> void:
 		
 		new_building.level = data[building_name]
 		add_child(new_building)
+		
+		
 
 func select() -> void:
 	if not selected:

@@ -1,14 +1,16 @@
 class_name Construction extends Building
 
-var building:Node
+var building:Variant
 var progress:float
 var difficulty:int = 100 #říká jak moc těžké je postavit budovu ,do toho se počítá i velikost budovy
 var effectivness:int = 5
 var expansion:bool
 
-func _init() -> void:
+func _init(is_expansion:bool, target_or_new_building:Variant) -> void:
 	inventory = {"crop": 0, "food":0, "clothes":0, "furniture":0, "electronics":0, "steel":0, "wood":0}
 	level = 1
+	expansion = is_expansion
+	building = target_or_new_building
 
 func _on_tick() -> void:
 	if money > 0:
