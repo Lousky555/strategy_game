@@ -75,3 +75,28 @@ func _on_building_demands_money(building:Node):
 	else:
 		money -= building.difficulty * building.effectivness
 		building.money += building.difficulty * building.effectivness
+
+func change_income_tax_rate(value:float) -> float:
+	var new_value = income_tax_rate + value
+	if new_value < 0 or new_value > 1:
+		return income_tax_rate
+	else :
+		income_tax_rate = new_value
+		return income_tax_rate
+
+
+func change_property_tax_rate(value:float) -> float:
+	var new_value = property_tax_rate + value
+	if new_value < 0:
+		return property_tax_rate
+	else :
+		property_tax_rate = new_value
+		return property_tax_rate
+
+func change_consuption_tax_rate(value:float) -> float:
+	var new_value = consuption_tax_rate + value
+	if new_value < 0 or new_value > 1:
+		return consuption_tax_rate
+	else :
+		consuption_tax_rate = new_value
+		return consuption_tax_rate

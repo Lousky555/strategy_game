@@ -33,9 +33,9 @@ func _work():
 		inventory["steel"] -= effectivness * difficulty
 	elif inventory["wood"] < inventory["steel"]:
 		progress += inventory["wood"] / difficulty / 100
-		inventory["wood"] = 0
 		inventory["steel"] -= inventory["wood"]
+		inventory["wood"] = 0
 	elif inventory["wood"] > inventory["steel"]:
 		progress += inventory["steel"] / difficulty / 100
-		inventory["steel"] = 0
 		inventory["wood"] -= inventory["steel"]
+		inventory["steel"] = 0

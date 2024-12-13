@@ -21,6 +21,12 @@ func construct_building_ui(province:Node2D):
 		hbox.add_child(UiMake.make_label(str(child.money)))
 	
 
+func construct_construction_ui(province:Node2D):
+	var hbox = HBoxContainer.new()
+	add_child(hbox)
+	
+	
+
 func _on_province_selected(province:Node2D):
 	for child:Node in buildings_container.get_children():
 			child.queue_free()
