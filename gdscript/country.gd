@@ -84,7 +84,6 @@ func change_income_tax_rate(value:float) -> float:
 		income_tax_rate = new_value
 		return income_tax_rate
 
-
 func change_property_tax_rate(value:float) -> float:
 	var new_value = property_tax_rate + value
 	if new_value < 0:
