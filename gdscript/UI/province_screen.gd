@@ -1,10 +1,11 @@
 extends PanelContainer
 
-@onready var name_label = $ProvinceInfo/name
-@onready var owner_label = $ProvinceInfo/OwnerBox/Owner
-@onready var terrain_label = $ProvinceInfo/TerrainBox/Terrain
-@onready var population_label = $ProvinceInfo/PopulationBox/Population
-@onready var buildings_container = $ProvinceInfo/Buildings
+@onready var name_label = $HBoxContainer/ProvinceInfo/name
+@onready var owner_label = $HBoxContainer/ProvinceInfo/OwnerBox/Owner
+@onready var terrain_label = $HBoxContainer/ProvinceInfo/TerrainBox/Terrain
+@onready var population_label = $HBoxContainer/ProvinceInfo/PopulationBox/Population
+@onready var buildings_container = $HBoxContainer/ProvinceInfo/Buildings
+@onready var builder_ui = $HBoxContainer/BuilderUI
 
 func construct_building_ui(province:Node2D):
 	for child:Node in province.get_children():
@@ -22,10 +23,8 @@ func construct_building_ui(province:Node2D):
 	
 
 func construct_construction_ui(province:Node2D):
-	var hbox = HBoxContainer.new()
-	add_child(hbox)
-	
-	
+	for building:String in Buildings.dict:
+		pass
 
 func _on_province_selected(province:Node2D):
 	for child:Node in buildings_container.get_children():

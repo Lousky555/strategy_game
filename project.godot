@@ -17,11 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-TimeManager="*res://gdscript/time_manager.gd"
-FileSystem="*res://gdscript/file_system.gd"
-OuterSpace="*res://gdscript/outer_space.gd"
-Player="*res://gdscript/player.gd"
-UiMake="*res://gdscript/ui_maker.gd"
+TimeManager="*res://gdscript/globals/time_manager.gd"
+FileSystem="*res://gdscript/globals/file_system.gd"
+OuterSpace="*res://gdscript/globals/outer_space.gd"
+Player="*res://gdscript/globals/player.gd"
+UiMake="*res://gdscript/globals/ui_maker.gd"
+Buildings="*res://gdscript/globals/buildings.gd"
 
 [editor]
 
