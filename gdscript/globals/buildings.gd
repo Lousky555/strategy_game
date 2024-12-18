@@ -2,13 +2,11 @@ extends Node
 
 var dict:Dictionary = {
 	"ArmsFactory":ArmsFactory,
-	"Building":Building,
 	"CoalMine":CoalMine,
 	"ElectronicsFactory":ElectronicsFactory,
 	"Farm":Farm,
 	"FoodFactory":FoodFactory,
 	"FurnitureFactory":FurnitureFactory,
-	"GovermentConstruction":GovermentConstruction,
 	"LumberMill":LumberMill,
 	"MetalMine":MetalMine,
 	"Pasture":Pasture,

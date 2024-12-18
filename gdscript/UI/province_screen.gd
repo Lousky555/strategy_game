@@ -5,7 +5,9 @@ extends PanelContainer
 @onready var terrain_label = $HBoxContainer/ProvinceInfo/TerrainBox/Terrain
 @onready var population_label = $HBoxContainer/ProvinceInfo/PopulationBox/Population
 @onready var buildings_container = $HBoxContainer/ProvinceInfo/Buildings
-@onready var builder_ui = $HBoxContainer/BuilderUI
+@onready var builder_ui = $HBoxContainer/VBoxContainer/BuilderUI
+
+var current_province:Node2D
 
 func _ready() -> void:
 	construct_construction_ui()
@@ -52,12 +54,19 @@ func _on_province_selected(province:Node2D):
 		population_label.text = "0"
 	
 	construct_building_ui(province)
+	current_province = province
 	
 	visible = true
 
+#nutno cele predelat
 func  _on_province_deselected(province_name:String):
 	if name_label.text == province_name: 
-		visible = false
+		#visible = false
+		pass
 
 func _on_building_button_pressed(building):
-	pass
+	current_province._build_building(building, true)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("esc"):
+		visible = false

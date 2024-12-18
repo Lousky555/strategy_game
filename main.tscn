@@ -108,15 +108,14 @@ layout_mode = 2
 [node name="Buildings" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Build building"
+text = "Build buildings:"
 
-[node name="BuilderUI" type="GridContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer"]
-visible = false
+[node name="BuilderUI" type="GridContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
