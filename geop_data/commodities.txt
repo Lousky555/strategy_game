@@ -9,6 +9,6 @@
 	"wood":{"prize":"5"},
 	"furniture":{"prize":"40"},
 	"building_materials":{"prize":"7"},
-	"steal":{"prize":"20"},
+	"steel":{"prize":"20"},
 	"coal":{"prize":"9"}
 }

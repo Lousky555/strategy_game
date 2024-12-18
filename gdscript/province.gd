@@ -23,47 +23,11 @@ func _make_area(polygons, color:String) -> void:
 		graphical_polygons.append(graphical_polygon)
 
 func _make_buildings(data:Dictionary) -> void:
-	for building_name in data:
+	for building_name:String in data:
 		var new_building: Variant
-		match building_name:
-			"farm":
-				new_building = Farm.new()
-				new_building.name = "Farm"
-			"arms-factory":
-				new_building = ArmsFactory.new()
-				new_building.name = "Arms Factory"
-			"coal-mine":
-				new_building = CoalMine.new()
-				new_building.name = "Coal Mine"
-			"electronics-factory":
-				new_building = ElectronicsFactory.new()
-				new_building.name = "Electronics Factory"
-			"furniture-factory":
-				new_building = FurnitureFactory.new()
-				new_building.name = "Furniture Factory"
-			"lumber-mill":
-				new_building = LumberMill.new()
-				new_building.name = "Lumber Mill"
-			"food-factory":
-				new_building = FoodFactory.new()
-				new_building.name = "Food Factory"
-			"metal-mine":
-				new_building = MetalMine.new()
-				new_building.name = "Metal Mine"
-			"pasture":
-				new_building = Pasture.new()
-				new_building.name = "Pasture"
-			"steel-mill":
-				new_building = SteelMill.new()
-				new_building.name = "Steel Mill"
-			"textile-mill":
-				new_building = TextileMill.new()
-				new_building.name = "Textile Mill"
-			"school":
-				new_building = School.new()
-				new_building.name = "School"
-		
+		new_building = Buildings.get_building(building_name).new()
 		new_building.level = data[building_name]
+		new_building.name = building_name.replace("-"," ")
 		add_child(new_building)
 
 func select() -> void:
@@ -86,4 +50,15 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc") or (event.is_action_pressed("select") and !province_area.mouse_inside):
 		deselect()
 	
-		
+func _build_building(building:Variant, govermental:bool):
+	for child in get_children():
+		if child.get_script() == building:
+			if govermental:
+				var construction = GovermentConstruction.new(true, child)
+				construction.name = (Buildings.dict.find_key(building) + " construction")
+				add_child(construction)
+				return
+	if govermental:
+		var construction = GovermentConstruction.new(false, building)
+		construction.name = (Buildings.dict.find_key(building) + " construction")
+		add_child(construction)

@@ -12,7 +12,7 @@ func get_commodity(argument_name: String) -> Commodity:
 		if i == argument_name:
 			return commodities[i]
 		
-	printerr("Cant find commodity")
+	printerr("Cant find commodity" + argument_name)
 	get_tree().quit()
 	return Commodity.new()
 
@@ -25,7 +25,7 @@ func _on_make_demand(building: Variant, commodity_name: String, amount: float, n
 		return
 	
 	if need:
-		country.money += money_spend * country.consuption_tax_rate
+		country.pay_consuption_tax(money_spend * country.consuption_tax_rate)
 	
 	building.money -= money_spend
 	building.inventory[commodity_name] +=  amount

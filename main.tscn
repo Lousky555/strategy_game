@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bq57klw1kgv54"]
+[gd_scene load_steps=22 format=3 uid="uid://bq57klw1kgv54"]
 
 [ext_resource type="Script" path="res://gdscript/main.gd" id="1_d1g38"]
 [ext_resource type="Texture2D" uid="uid://d07c1l75sk7yq" path="res://src/maps/High-Resolution-World-Map.png" id="1_de0x2"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" path="res://gdscript/UI/income_tax_container.gd" id="14_hq156"]
 [ext_resource type="Script" path="res://gdscript/UI/consuption_tax_container.gd" id="15_dsgk7"]
 [ext_resource type="Script" path="res://gdscript/UI/property_tax_container.gd" id="16_ybmec"]
+
+[sub_resource type="Theme" id="Theme_ig7jo"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_021e0"]
 size = Vector2(100, 100)
@@ -54,66 +56,75 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ProvinceScreen" type="PanelContainer" parent="CanvasLayer/AspectRatioContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme = SubResource("Theme_ig7jo")
 script = ExtResource("5_vpy8m")
 metadata/_edit_use_anchors_ = true
 
-[node name="ProvinceInfo" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen"]
+layout_mode = 2
+
+[node name="ProvinceInfo" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="name" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo"]
+[node name="name" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Bavaria"
 
-[node name="TerrainBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo"]
+[node name="TerrainBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo"]
 layout_mode = 2
 
-[node name="description" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo/TerrainBox"]
+[node name="description" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo/TerrainBox"]
 layout_mode = 2
 text = "Terrain:"
 
-[node name="Terrain" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo/TerrainBox"]
+[node name="Terrain" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo/TerrainBox"]
 layout_mode = 2
 
-[node name="OwnerBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo"]
+[node name="OwnerBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo"]
 layout_mode = 2
 
-[node name="descpription" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo/OwnerBox"]
+[node name="descpription" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo/OwnerBox"]
 layout_mode = 2
 text = "Owned by:"
 
-[node name="Owner" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo/OwnerBox"]
+[node name="Owner" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo/OwnerBox"]
 layout_mode = 2
 
-[node name="PopulationBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo"]
+[node name="PopulationBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo"]
 layout_mode = 2
 
-[node name="descrption" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo/PopulationBox"]
+[node name="descrption" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo/PopulationBox"]
 layout_mode = 2
 text = "Population:"
 
-[node name="Population" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo/PopulationBox"]
+[node name="Population" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo/PopulationBox"]
 layout_mode = 2
 
-[node name="Buildings" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceInfo"]
+[node name="Buildings" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo"]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Build buildings:"
+
+[node name="BuilderUI" type="GridContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-
-[node name="pause_and_play_button" type="TextureButton" parent="CanvasLayer/AspectRatioContainer/HBoxContainer"]
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("6_x5362")
-texture_pressed = ExtResource("7_jam1b")
-script = ExtResource("8_h2ke4")
 
 [node name="first_speed_buttton" type="Button" parent="CanvasLayer/AspectRatioContainer/HBoxContainer"]
 layout_mode = 2
@@ -129,6 +140,13 @@ script = ExtResource("10_mnsox")
 layout_mode = 2
 icon = SubResource("PlaceholderTexture2D_mnfvc")
 script = ExtResource("11_5v2h2")
+
+[node name="pause_button" type="TextureButton" parent="CanvasLayer/AspectRatioContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("6_x5362")
+texture_pressed = ExtResource("7_jam1b")
+script = ExtResource("8_h2ke4")
 
 [node name="TopLine" type="TabContainer" parent="CanvasLayer/AspectRatioContainer"]
 layout_mode = 2
@@ -177,7 +195,6 @@ text = "Income tax surplus:"
 
 [node name="Value" type="Label" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxSurplus"]
 layout_mode = 2
-text = "0"
 
 [node name="ConsuptionTaxSurplus" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine/Country"]
 layout_mode = 2
@@ -188,7 +205,6 @@ text = "Consuption tax surplus:"
 
 [node name="Value" type="Label" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTaxSurplus"]
 layout_mode = 2
-text = "0"
 
 [node name="PropertyTaxSurplus" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine/Country"]
 layout_mode = 2
@@ -199,7 +215,6 @@ text = "Property tax surplus:"
 
 [node name="Value" type="Label" parent="CanvasLayer/AspectRatioContainer/TopLine/Country/PropertyTaxSurplus"]
 layout_mode = 2
-text = "0"
 
 [node name="IncomeTaxContainer" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/TopLine/Country"]
 layout_mode = 2

@@ -25,7 +25,7 @@ func load_provinces(info:Dictionary) -> void:
 	var data:Dictionary = FileSystem.import_file("res://geop_data/provinces.txt") 
 	
 	for color:String in data:
-		var map:Image = province_map.texture.get_image()
+		var map:Image = Image.load_from_file("res://src/maps/High-Resolution-World-Map.png")
 		var province_bitmap:BitMap = get_province_bitmap(map, Color(color))
 		var polygons:Array[PackedVector2Array] = province_bitmap.opaque_to_polygons(Rect2(Vector2(), province_bitmap.get_size()))
 		
