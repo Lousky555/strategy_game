@@ -7,6 +7,10 @@ extends PanelContainer
 @onready var buildings_container = $HBoxContainer/ProvinceInfo/Buildings
 @onready var builder_ui = $HBoxContainer/BuilderUI
 
+func _ready() -> void:
+	construct_construction_ui()
+	visible = false
+
 func construct_building_ui(province:Node2D):
 	for child:Node in province.get_children():
 		if child is Area2D or child is Polygon2D:
@@ -22,9 +26,11 @@ func construct_building_ui(province:Node2D):
 		hbox.add_child(UiMake.make_label(str(child.money)))
 	
 
-func construct_construction_ui(province:Node2D):
+func construct_construction_ui():
 	for building:String in Buildings.dict:
-		pass
+		var button = UiMake.make_bulding_button(building, Buildings.get_building(building))
+		button.building_button_pressed.connect(_on_building_button_pressed)
+		builder_ui.add_child(button)
 
 func _on_province_selected(province:Node2D):
 	for child:Node in buildings_container.get_children():
@@ -52,3 +58,6 @@ func _on_province_selected(province:Node2D):
 func  _on_province_deselected(province_name:String):
 	if name_label.text == province_name: 
 		visible = false
+
+func _on_building_button_pressed(building):
+	pass

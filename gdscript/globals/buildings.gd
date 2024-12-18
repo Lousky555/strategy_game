@@ -17,10 +17,12 @@ var dict:Dictionary = {
 	"TextileMill":TextileMill
 }
 
-func get_building_from_geop_data(data:String):
+func get_building(data:String):
+	data = data.to_pascal_case()
 	if data.contains("-"):
 		data = data.replace("-","_")
 		data = data.to_pascal_case()
 	if data.contains("_"):
 		data = data.to_pascal_case()
+
 	return dict[data]

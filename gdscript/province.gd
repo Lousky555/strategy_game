@@ -25,7 +25,7 @@ func _make_area(polygons, color:String) -> void:
 func _make_buildings(data:Dictionary) -> void:
 	for building_name:String in data:
 		var new_building: Variant
-		new_building = Buildings.get_building_from_geop_data(building_name).new()
+		new_building = Buildings.get_building(building_name).new()
 		new_building.level = data[building_name]
 		new_building.name = building_name.replace("-"," ")
 		add_child(new_building)
