@@ -2,6 +2,7 @@ class_name Province extends Node2D
 
 @export var province_area:Province_Area
 var selected:bool = false
+var center:Vector2 
 @export var graphical_polygons:Array = Array()
 
 signal province_selected(Province:Node2D)
@@ -21,6 +22,7 @@ func _make_area(polygons, color:String) -> void:
 		province_area.add_child(province_polygon)
 		add_child(graphical_polygon)
 		graphical_polygons.append(graphical_polygon)
+		
 
 func _make_buildings(data:Dictionary) -> void:
 	for building_name:String in data:

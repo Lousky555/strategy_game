@@ -1,7 +1,10 @@
 class_name Barrack extends GovermentBuilding
 
+var unit_scene = preload("res://scenes/military_unit.tscn")
+
 var equipment:int
 var equipment_multiplier:float = 0.5
+var unit:MilitaryUnit 
 
 signal equipment_change(value:int)
 
@@ -50,3 +53,7 @@ func _ready() -> void:
 	TimeManager.tick.connect(_on_tick)
 	country.war_started.connect(_on_war_started)
 	country.war_ended.connect(_on_war_ended)
+	
+	unit = unit_scene.instantiate()
+	country.add_child(unit)
+	unit.global_position = get_parent().center

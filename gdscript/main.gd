@@ -54,6 +54,7 @@ func load_provinces(info:Dictionary) -> void:
 			info[data[color]["country"]]["reference"].population += province.population
 		province.name = data[color]["name"]
 		province._make_area(polygons, info[data[color]["country"]]["color"])
+		province.center = get_center(polygons)
 		if province is PopulatedProvince:
 			province._make_buildings(data[color]["buildings"])
 
@@ -101,3 +102,14 @@ func _ready() -> void:
 	
 	province_map.visible = false
 	init_ui()
+
+func get_center(polygons:Array[PackedVector2Array]) -> Vector2:
+	var merged_polygon:Array[Vector2]
+	for i in polygons: 
+		merged_polygon.append_array(Array(i))
+	
+	var sum:Vector2 = Vector2(0,0)
+	for vector in merged_polygon:
+		sum += vector 
+	
+	return sum / merged_polygon.size()
