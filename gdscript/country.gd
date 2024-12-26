@@ -17,6 +17,8 @@ signal on_money_change(value:float)
 signal income_tax_sup_change(value:float)
 signal consuption_tax_sup_change(value:float)
 signal propery_tax_sup_change(value:float)
+signal war_started()
+signal war_ended()
 
 var monthly_income_tax_surplus:float = 0:
 	set (value):
@@ -69,9 +71,12 @@ func _on_school_level_change(value:int):
 	total_school_level += value
 
 func _on_building_demands_money(building:Node):
-	if building is not GovermentConstruction:
+	if building is School:
 		money -= building.level * 10
 		building.money += building.level * 10
+	elif building is Barrack:
+		money -= building.level * 80
+		building.money += building.level * 80
 	else:
 		money -= building.difficulty * building.effectivness
 		building.money += building.difficulty * building.effectivness

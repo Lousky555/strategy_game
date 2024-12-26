@@ -9,7 +9,6 @@ func _ready() -> void:
 	
 	make_supply.connect(market._on_make_supply)
 	make_demand.connect(market._on_make_demand)
-	property_tax_pay.connect(country._on_property_tax_pay)
 	level_change.connect(country._on_school_level_change)
 	get_state_money.connect(country._on_building_demands_money)
 	TimeManager.tick.connect(_on_tick)
