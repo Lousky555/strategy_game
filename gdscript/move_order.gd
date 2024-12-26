@@ -3,10 +3,14 @@ class_name MoverOrder extends Node
 var start:Vector2
 var end:Vector2
 var lenght
-var progress:int
-var unit:MilitaryUnit
+var progress:int = 0
+var speed:int
+var progress_per_tick:int 
+var x_ratio:float
+var y_ratio:float
 
-signal change_postion
+signal change_postion(pos:Vector2)
+signal movement_ends()
 
 func _init(astart:Vector2, aend:Vector2) -> void:
 	start = astart
@@ -20,7 +24,20 @@ func _init(astart:Vector2, aend:Vector2) -> void:
 
 func _ready() -> void:
 	TimeManager.tick.connect(_on_tick)
-	unit = get_parent()
+	speed = get_parent().speed
+	progress_per_tick = (speed / lenght) * 100
 
 func _on_tick():
-	pass
+	progress += progress_per_tick
+	if progress < 100:
+		change_postion.emit(Vector2(speed * x_ratio, speed * y_ratio))
+	else:
+		change_postion.emit(end)
+		movement_ends.emit()
+		queue_free()
+
+func make_ratios():
+	var vector:Vector2 = start - end
+	var sum:int = abs(vector.x) + abs(vector.y)
+	x_ratio = vector.x / sum
+	y_ratio = vector.y / sum
