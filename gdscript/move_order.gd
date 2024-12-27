@@ -18,7 +18,8 @@ func _init(astart:Vector2, aend:Vector2) -> void:
 	var line = Line2D.new()
 	line.add_point(start)
 	line.add_point(end)
-	line.z_index = 3
+	line.z_index = 1
+	add_child(line)
 	
 	lenght = start.distance_to(end)
 	direction = start.direction_to(end)
@@ -31,7 +32,7 @@ func _ready() -> void:
 func _on_tick():
 	progress += progress_per_tick
 	if progress < 100:
-		change_position.emit(start + direction * speed)
+		change_position.emit(get_parent().global_position + direction * speed)
 	else:
 		change_position.emit(end)
 		movement_ends.emit()

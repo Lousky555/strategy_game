@@ -35,7 +35,7 @@ script = ExtResource("1_d1g38")
 [node name="Water" type="Sprite2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(2, 0)
+position = Vector2(8, -8)
 scale = Vector2(246.25, 133.25)
 texture = ExtResource("4_gvfha")
 

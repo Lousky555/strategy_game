@@ -58,3 +58,5 @@ func _ready() -> void:
 	country.add_child(unit)
 	unit.global_position = get_parent().center
 	unit.province = get_parent()
+	
+	equipment_change.connect(unit._on_equipment_change)
