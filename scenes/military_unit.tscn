@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dlj8bobgbrbn7"]
+[gd_scene load_steps=28 format=3 uid="uid://dlj8bobgbrbn7"]
 
 [ext_resource type="Script" path="res://gdscript/military_unit.gd" id="1_ncm6d"]
 [ext_resource type="Texture2D" uid="uid://b60t38uiuxqtl" path="res://src/vojaci/Gunner_Red_Idle.png" id="2_0ylug"]
@@ -436,12 +436,19 @@ states/running/node = SubResource("AnimationNodeBlendSpace1D_4o3il")
 states/running/position = Vector2(539, 78)
 transitions = ["idling", "running", SubResource("AnimationNodeStateMachineTransition_vps32"), "running", "idling", SubResource("AnimationNodeStateMachineTransition_k7sn7"), "running", "dying", SubResource("AnimationNodeStateMachineTransition_jt6tn")]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7rqr2"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7ynk"]
+size = Vector2(21, 49)
+
 [node name="MilitaryUnit" type="Node2D"]
 z_index = 1
 script = ExtResource("1_ncm6d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -10)
+position = Vector2(2, -10)
+scale = Vector2(0.78, 0.8)
 texture = ExtResource("2_0ylug")
 hframes = 5
 
@@ -458,3 +465,27 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/dying/blend_position = 0
 parameters/idling/blend_position = 0.0
 parameters/running/blend_position = 0.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -11.0
+offset_top = 2.0
+offset_right = 29.0
+offset_bottom = 25.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_7rqr2")
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "1"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_b7ynk")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

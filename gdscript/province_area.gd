@@ -5,6 +5,7 @@ class_name Province_Area extends Area2D
 func setup() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+	input_pickable = true
 
 func _on_mouse_entered() -> void:
 	mouse_inside = true

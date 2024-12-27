@@ -55,6 +55,8 @@ func load_provinces(info:Dictionary) -> void:
 		province.name = data[color]["name"]
 		province._make_area(polygons, info[data[color]["country"]]["color"])
 		province.center = get_center(polygons)
+		province.province_selected.connect(Selector._on_province_selected)
+		province.moving_detected.connect(Selector._on_movement_order)
 		if province is PopulatedProvince:
 			province._make_buildings(data[color]["buildings"])
 

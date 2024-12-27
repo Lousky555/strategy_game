@@ -57,3 +57,4 @@ func _ready() -> void:
 	unit = unit_scene.instantiate()
 	country.add_child(unit)
 	unit.global_position = get_parent().center
+	unit.province = get_parent()

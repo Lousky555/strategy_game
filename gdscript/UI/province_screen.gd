@@ -32,6 +32,7 @@ func construct_construction_ui():
 	for building:String in Buildings.dict:
 		var button = UiMake.make_bulding_button(building, Buildings.get_building(building))
 		button.building_button_pressed.connect(_on_building_button_pressed)
+		button.building_button_pressed.connect(Selector._on_button_pressed)
 		builder_ui.add_child(button)
 
 func _on_province_selected(province:Node2D):
@@ -61,7 +62,7 @@ func _on_province_selected(province:Node2D):
 #nutno cele predelat
 func  _on_province_deselected(province_name:String):
 	if name_label.text == province_name: 
-		#visible = false
+		visible = false
 		pass
 
 func _on_building_button_pressed(building):

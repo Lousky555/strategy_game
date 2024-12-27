@@ -12,6 +12,7 @@ class_name Country extends Node2D
 		on_money_change.emit(value)
 		money = value
 @export var population:int = 0
+@export var in_war:bool = false
 
 signal on_money_change(value:float)
 signal income_tax_sup_change(value:float)
