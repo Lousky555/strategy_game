@@ -12,3 +12,4 @@ func _ready() -> void:
 	level_change.connect(country._on_school_level_change)
 	get_state_money.connect(country._on_building_demands_money)
 	TimeManager.tick.connect(_on_tick)
+	TimeManager.longer_tick.connect(_on_longer_tick)

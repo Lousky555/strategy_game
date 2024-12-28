@@ -58,6 +58,7 @@ func load_provinces(info:Dictionary) -> void:
 		province.province_selected.connect(Selector._on_province_selected)
 		province.moving_detected.connect(Selector._on_movement_order)
 		if province is PopulatedProvince:
+			province.unemployed_population = province.population
 			province._make_buildings(data[color]["buildings"])
 
 func load_countries(info:Dictionary) -> Dictionary:

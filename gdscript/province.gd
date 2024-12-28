@@ -24,15 +24,6 @@ func _make_area(polygons, color:String) -> void:
 		province_area.add_child(province_polygon)
 		add_child(graphical_polygon)
 		graphical_polygons.append(graphical_polygon)
-		
-
-func _make_buildings(data:Dictionary) -> void:
-	for building_name:String in data:
-		var new_building: Variant
-		new_building = Buildings.get_building(building_name).new()
-		new_building.level = data[building_name]
-		new_building.name = building_name.replace("-"," ")
-		add_child(new_building)
 
 func select() -> void:
 	if not selected:
@@ -60,6 +51,9 @@ func _build_building(building:Variant, govermental:bool):
 		var construction = GovermentConstruction.new(false, building)
 		construction.name = (Buildings.dict.find_key(building) + " construction")
 		add_child(construction)
+
+func _on_hire_employees(building:Node):
+	pass
 
 func _province_area_input(view: Viewport, event:InputEvent, child:int):
 	if event.is_action_pressed("select"):

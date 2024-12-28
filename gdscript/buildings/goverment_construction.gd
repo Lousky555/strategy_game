@@ -11,6 +11,8 @@ func _ready() -> void:
 	property_tax_pay.connect(country._on_property_tax_pay)
 	get_state_money.connect(country._on_building_demands_money)
 	TimeManager.tick.connect(_on_tick)
+	TimeManager.longer_tick.connect(_on_longer_tick)
+	hire_employees.emit(self)
 
 func _on_tick() -> void:
 	get_state_money.emit(self)

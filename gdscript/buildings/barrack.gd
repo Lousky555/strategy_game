@@ -10,6 +10,7 @@ signal equipment_change(value:int)
 
 func _init() -> void:
 	inventory = {"crop": 0, "food":0, "clothes":0, "furniture":0, "electronics":0, "arms": 0}
+	population_per_level = 1000
 
 func _on_tick():
 	get_state_money.emit(self)
@@ -53,6 +54,7 @@ func _ready() -> void:
 	TimeManager.tick.connect(_on_tick)
 	country.war_started.connect(_on_war_started)
 	country.war_ended.connect(_on_war_ended)
+	hire_employees.emit(self)
 	
 	unit = unit_scene.instantiate()
 	country.add_child(unit)
