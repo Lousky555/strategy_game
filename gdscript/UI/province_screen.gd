@@ -1,11 +1,13 @@
 extends PanelContainer
 
-@onready var name_label = $HBoxContainer/ProvinceInfo/name
-@onready var owner_label = $HBoxContainer/ProvinceInfo/OwnerBox/Owner
-@onready var terrain_label = $HBoxContainer/ProvinceInfo/TerrainBox/Terrain
-@onready var population_label = $HBoxContainer/ProvinceInfo/PopulationBox/Population
-@onready var buildings_container = $HBoxContainer/ProvinceInfo/Buildings
-@onready var builder_ui = $HBoxContainer/VBoxContainer/BuilderUI
+@onready var name_label = $ProvinceUI/ProvinceInfo/name
+@onready var owner_label = $ProvinceUI/ProvinceInfo/OwnerBox/Owner
+@onready var terrain_label = $ProvinceUI/ProvinceInfo/TerrainBox/Terrain
+@onready var population_label = $ProvinceUI/ProvinceInfo/PopulationBox/Population
+@onready var buildings_container = $ProvinceUI/ProvinceInfo/Buildings
+@onready var builder_ui = $ProvinceUI/VBoxContainer/BuilderUI
+@onready var army_ui = $ArmyUI
+@onready var province_ui = $ProvinceUI
 
 var current_province:Node2D
 
@@ -57,7 +59,8 @@ func _on_province_selected(province:Node2D):
 	construct_building_ui(province)
 	current_province = province
 	
-	visible = true
+	province_ui.visible = true
+	army_ui.visible = false 
 
 #nutno cele predelat
 func  _on_province_deselected(province_name:String):
@@ -71,3 +74,14 @@ func _on_building_button_pressed(building):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc"):
 		visible = false
+
+func _on_army_selected(army:Army):
+	for child in army_ui.get_children():
+		child.queue_free()
+	
+	army_ui.add_child(UiMake.make_label(army.name))
+	for unit in army.units:
+		var vbox = VBoxContainer.new()
+		army_ui.add_child(vbox)
+		vbox.add_child(UiMake.make_label("unit" + str(army.units.find(unit))))
+		vbox.add_child(UiMake.make_label(str(unit.equipment)))

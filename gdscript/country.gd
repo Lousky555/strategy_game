@@ -36,7 +36,7 @@ var monthly_propetry_tax_surplus:float = 0 :
 
 func _monthly_update() -> void:
 	for province: Node2D in get_children():
-		if !(province is Wasteland or province is Sea or province is MilitaryUnit):
+		if !(province is Wasteland or province is Sea or province is Army):
 			province.population += floor(province.population * growth_multiplier)
 			population += floor(province.population * growth_multiplier)
 		

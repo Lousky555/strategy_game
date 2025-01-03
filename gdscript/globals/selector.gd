@@ -2,7 +2,9 @@ extends Node
 
 var selected_province:Node2D
 var button_pressed:bool = false
-var selected_unit:MilitaryUnit
+var selected_unit:Army
+
+signal army_selected(army:Army)
 
 func _on_button_pressed():
 	button_pressed = true
@@ -21,9 +23,10 @@ func _on_movement_order(province):
 	and selected_unit.state == selected_unit.IDLING:
 		selected_unit.start_moving(province)
 	
-func _on_unit_selected(unit:MilitaryUnit):
+func _on_army_selected(army:Army):
 	deselect_province()
-	selected_unit = unit
+	army_selected.emit(army)
+	selected_unit = army
 	selected_unit.select()
 
 func _input(event: InputEvent) -> void: 

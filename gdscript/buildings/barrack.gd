@@ -1,10 +1,10 @@
 class_name Barrack extends GovermentBuilding
 
-var unit_scene = preload("res://scenes/military_unit.tscn")
+var army_scene = preload("res://scenes/army.tscn")
 
 var equipment:int
 var equipment_multiplier:float = 0.5
-var unit:MilitaryUnit 
+var units:Array[MilitaryUnit] 
 
 signal equipment_change(value:int)
 
@@ -56,9 +56,14 @@ func _ready() -> void:
 	country.war_ended.connect(_on_war_ended)
 	hire_employees.emit(self)
 	
-	unit = unit_scene.instantiate()
-	country.add_child(unit)
-	unit.global_position = get_parent().center
-	unit.province = get_parent()
+	var army = army_scene.instantiate()
+	country.add_child(army)
+	army.global_position = get_parent().center
+	army.province = get_parent()
 	
-	equipment_change.connect(unit._on_equipment_change)
+	for i in range(level):
+		var unit = MilitaryUnit.new()
+		units.append(unit)
+		equipment_change.connect(unit._on_equipment_change)
+	
+	army.add_units(units)
