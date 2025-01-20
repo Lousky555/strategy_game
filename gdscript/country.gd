@@ -12,11 +12,14 @@ class_name Country extends Node2D
 		on_money_change.emit(value)
 		money = value
 @export var population:int = 0
+@export var in_war:bool = false
 
 signal on_money_change(value:float)
 signal income_tax_sup_change(value:float)
 signal consuption_tax_sup_change(value:float)
 signal propery_tax_sup_change(value:float)
+signal war_started()
+signal war_ended()
 
 var monthly_income_tax_surplus:float = 0:
 	set (value):
@@ -33,7 +36,7 @@ var monthly_propetry_tax_surplus:float = 0 :
 
 func _monthly_update() -> void:
 	for province: Node2D in get_children():
-		if !(province is Wasteland or province is Sea):
+		if !(province is Wasteland or province is Sea or province is Army):
 			province.population += floor(province.population * growth_multiplier)
 			population += floor(province.population * growth_multiplier)
 		
@@ -69,9 +72,12 @@ func _on_school_level_change(value:int):
 	total_school_level += value
 
 func _on_building_demands_money(building:Node):
-	if building is not GovermentConstruction:
+	if building is School:
 		money -= building.level * 10
 		building.money += building.level * 10
+	elif building is Barrack:
+		money -= building.level * 80
+		building.money += building.level * 80
 	else:
 		money -= building.difficulty * building.effectivness
 		building.money += building.difficulty * building.effectivness

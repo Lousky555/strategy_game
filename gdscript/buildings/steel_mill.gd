@@ -5,6 +5,7 @@ func _init() -> void:
 	commodities_per_level = 5
 	input_efficency = 2
 	product = "steel"
+	population_per_level = 900
 
 func _on_tick() -> void:
 	if(money > 0):
@@ -15,18 +16,19 @@ func _on_tick() -> void:
 	make_supply.emit(self, product, inventory[product])
 
 func _work() -> void:
-	if inventory["metal"] >= level * commodities_per_level * input_efficency and inventory["coal"] >= level * commodities_per_level * input_efficency:
-		inventory[product] += level * commodities_per_level
-		inventory["metal"] -= level * commodities_per_level * input_efficency
-		inventory["coal"] -= level * commodities_per_level * input_efficency
+	if inventory["metal"] >= level * commodities_per_level * input_efficency * efficency \
+	and inventory["coal"] >= level * commodities_per_level * input_efficency * efficency:
+		inventory[product] += level * commodities_per_level * efficency
+		inventory["metal"] -= level * commodities_per_level * input_efficency * efficency
+		inventory["coal"] -= level * commodities_per_level * input_efficency * efficency
 	elif  inventory["metal"] > 0 and inventory["coal"] > 0:
 		if inventory["metal"] < inventory["coal"]:
-			inventory[product] = inventory["metal"] / input_efficency
-			inventory["coal"] -= inventory["metal"]
+			inventory[product] = inventory["metal"] / input_efficency * efficency
+			inventory["coal"] -= inventory["metal"] * efficency
 			inventory["metal"] = 0
 		else:
-			inventory[product] = inventory["coal"] / input_efficency
-			inventory["metal"] -= inventory["coal"]
+			inventory[product] = inventory["coal"] / input_efficency * efficency
+			inventory["metal"] -= inventory["coal"] * efficency
 			inventory["coal"] = 0
 	else:
 		return

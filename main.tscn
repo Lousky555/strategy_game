@@ -35,7 +35,7 @@ script = ExtResource("1_d1g38")
 [node name="Water" type="Sprite2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(2, 0)
+position = Vector2(80, 128)
 scale = Vector2(246.25, 133.25)
 texture = ExtResource("4_gvfha")
 
@@ -63,63 +63,66 @@ theme = SubResource("Theme_ig7jo")
 script = ExtResource("5_vpy8m")
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen"]
+[node name="ProvinceUI" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen"]
 layout_mode = 2
 
-[node name="ProvinceInfo" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer"]
+[node name="ProvinceInfo" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="name" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo"]
+[node name="name" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/ProvinceInfo"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Bavaria"
 
-[node name="TerrainBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo"]
+[node name="TerrainBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/ProvinceInfo"]
 layout_mode = 2
 
-[node name="description" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo/TerrainBox"]
+[node name="description" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/ProvinceInfo/TerrainBox"]
 layout_mode = 2
 text = "Terrain:"
 
-[node name="Terrain" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo/TerrainBox"]
+[node name="Terrain" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/ProvinceInfo/TerrainBox"]
 layout_mode = 2
 
-[node name="OwnerBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo"]
+[node name="OwnerBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/ProvinceInfo"]
 layout_mode = 2
 
-[node name="descpription" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo/OwnerBox"]
+[node name="descpription" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/ProvinceInfo/OwnerBox"]
 layout_mode = 2
 text = "Owned by:"
 
-[node name="Owner" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo/OwnerBox"]
+[node name="Owner" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/ProvinceInfo/OwnerBox"]
 layout_mode = 2
 
-[node name="PopulationBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo"]
+[node name="PopulationBox" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/ProvinceInfo"]
 layout_mode = 2
 
-[node name="descrption" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo/PopulationBox"]
+[node name="descrption" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/ProvinceInfo/PopulationBox"]
 layout_mode = 2
 text = "Population:"
 
-[node name="Population" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo/PopulationBox"]
+[node name="Population" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/ProvinceInfo/PopulationBox"]
 layout_mode = 2
 
-[node name="Buildings" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/ProvinceInfo"]
+[node name="Buildings" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/ProvinceInfo"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/VBoxContainer"]
 layout_mode = 2
 text = "Build buildings:"
 
-[node name="BuilderUI" type="GridContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/HBoxContainer/VBoxContainer"]
+[node name="BuilderUI" type="GridContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 2
+
+[node name="ArmyUI" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen"]
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer"]
 layout_mode = 2

@@ -12,7 +12,8 @@ var dict:Dictionary = {
 	"Pasture":Pasture,
 	"School":School,
 	"SteelMill":SteelMill,
-	"TextileMill":TextileMill
+	"TextileMill":TextileMill,
+	"Barrack":Barrack
 }
 
 func get_building(data:String):

@@ -11,6 +11,7 @@ func _init(is_expansion:bool, target_or_new_building:Variant) -> void:
 	level = 1
 	expansion = is_expansion
 	building = target_or_new_building
+	population_per_level = 200
 
 func _on_tick() -> void:
 	if money > 0:

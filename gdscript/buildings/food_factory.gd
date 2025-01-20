@@ -7,3 +7,4 @@ func _init() -> void:
 	product = "food"
 	production_input = "crop"
 	needs.erase(product)
+	population_per_level = 700

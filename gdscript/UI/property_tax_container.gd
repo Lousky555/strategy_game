@@ -4,6 +4,8 @@ extends HBoxContainer
 
 func start() -> void:
 	precentage_label.text = str(Player.country.property_tax_rate)
+	$PlusButton.pressed.connect(Selector._on_button_pressed)
+	$MinusButton2.pressed.connect(Selector._on_button_pressed)
 
 func _on_minus_button_pressed() -> void:
 	var value = Player.country.change_property_tax_rate(-0.1)
