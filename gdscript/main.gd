@@ -21,6 +21,7 @@ func get_province_bitmap(map:Image, color:Color) -> BitMap:
 	province_bitmap.create_from_image_alpha(bitmap_image)
 	return province_bitmap
 
+	
 func load_provinces(info:Dictionary) -> void:
 	var data:Dictionary = FileSystem.import_file("res://geop_data/provinces.txt") 
 	
@@ -46,7 +47,7 @@ func load_provinces(info:Dictionary) -> void:
 				province = Wasteland.new()
 		
 		if province is not Wasteland:
-			province.province_selected.connect(province_screen._on_province_selected)
+			province.province_selected.connect(Selector._on_province_selected)
 			province.province_deselected.connect(province_screen._on_province_deselected)
 		
 		info[data[color]["country"]]["reference"].add_child(province)
@@ -55,7 +56,6 @@ func load_provinces(info:Dictionary) -> void:
 		province.name = data[color]["name"]
 		province._make_area(polygons, info[data[color]["country"]]["color"])
 		province.center = get_center(polygons)
-		province.province_selected.connect(Selector._on_province_selected)
 		province.moving_detected.connect(Selector._on_movement_order)
 		if province is PopulatedProvince:
 			province.unemployed_population = province.population

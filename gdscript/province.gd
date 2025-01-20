@@ -30,7 +30,6 @@ func select() -> void:
 		for polygon in graphical_polygons:
 			polygon.color = polygon.color + Color(0.2, 0.2, 0.2)
 		selected = true
-		province_selected.emit(self)
 
 func deselect() -> void:
 	if selected:
@@ -57,7 +56,7 @@ func _on_hire_employees(building:Node):
 
 func _province_area_input(view: Viewport, event:InputEvent, child:int):
 	if event.is_action_pressed("select"):
-		select()
+		province_selected.emit(self)
 	
 	if event.is_action_pressed("move"):
 		moving_detected.emit(self)

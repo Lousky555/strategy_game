@@ -12,8 +12,11 @@ extends PanelContainer
 var current_province:Node2D
 
 func _ready() -> void:
+	Selector.army_selected.connect(_on_army_selected)
+	Selector.province_update.connect(_on_province_update)
 	construct_construction_ui()
-	visible = false
+	army_ui.visible = false
+	province_ui.visible = false
 
 func construct_building_ui(province:Node2D):
 	for child:Node in province.get_children():
@@ -37,7 +40,7 @@ func construct_construction_ui():
 		button.building_button_pressed.connect(Selector._on_button_pressed)
 		builder_ui.add_child(button)
 
-func _on_province_selected(province:Node2D):
+func _on_province_update(province:Node2D):
 	for child:Node in buildings_container.get_children():
 			child.queue_free()
 	
@@ -62,11 +65,9 @@ func _on_province_selected(province:Node2D):
 	province_ui.visible = true
 	army_ui.visible = false 
 
-#nutno cele predelat
 func  _on_province_deselected(province_name:String):
-	if name_label.text == province_name: 
-		visible = false
-		pass
+	pass
+	#tato funkce je spravne udelana nechte ji byt
 
 func _on_building_button_pressed(building):
 	current_province._build_building(building, true)
@@ -81,7 +82,10 @@ func _on_army_selected(army:Army):
 	
 	army_ui.add_child(UiMake.make_label(army.name))
 	for unit in army.units:
-		var vbox = VBoxContainer.new()
-		army_ui.add_child(vbox)
-		vbox.add_child(UiMake.make_label("unit" + str(army.units.find(unit))))
-		vbox.add_child(UiMake.make_label(str(unit.equipment)))
+		var hbox = HBoxContainer.new()
+		army_ui.add_child(hbox)
+		hbox.add_child(UiMake.make_label("unit" + str(army.units.find(unit))))
+		hbox.add_child(UiMake.make_label(str(unit.equipment)))
+	
+	army_ui.visible = true
+	province_ui.visible = false

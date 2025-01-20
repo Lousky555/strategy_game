@@ -1,13 +1,13 @@
 [gd_scene load_steps=30 format=3 uid="uid://dlj8bobgbrbn7"]
 
-[ext_resource type="Script" path="res://gdscript/military_unit.gd" id="1_ncm6d"]
-[ext_resource type="Texture2D" uid="uid://b60t38uiuxqtl" path="res://src/vojaci/Gunner_Red_Idle.png" id="2_0ylug"]
-[ext_resource type="Shader" path="res://shaders/military_unit.gdshader" id="2_ufnkm"]
-[ext_resource type="Texture2D" uid="uid://b3gjuhbml1oli" path="res://src/vojaci/Gunner_Red_Run.png" id="3_xb18u"]
-[ext_resource type="Texture2D" uid="uid://d1t1uxecm3ht4" path="res://src/vojaci/Gunner_Red_Death.png" id="4_rkmo2"]
+[ext_resource type="Script" path="res://gdscript/army.gd" id="1_kncsp"]
+[ext_resource type="Shader" path="res://shaders/military_unit.gdshader" id="2_x7usl"]
+[ext_resource type="Texture2D" uid="uid://b60t38uiuxqtl" path="res://src/vojaci/Gunner_Red_Idle.png" id="3_6e5qw"]
+[ext_resource type="Texture2D" uid="uid://d1t1uxecm3ht4" path="res://src/vojaci/Gunner_Red_Death.png" id="4_u2nra"]
+[ext_resource type="Texture2D" uid="uid://b3gjuhbml1oli" path="res://src/vojaci/Gunner_Red_Run.png" id="5_cf7wp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vhnkh"]
-shader = ExtResource("2_ufnkm")
+shader = ExtResource("2_x7usl")
 shader_parameter/width = 0
 shader_parameter/outline_color = Color(0.831373, 0.980392, 0.168627, 1)
 shader_parameter/flickering_speed = 3.0
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_0ylug")]
+"values": [ExtResource("3_6e5qw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -76,7 +76,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_rkmo2")]
+"values": [ExtResource("4_u2nra")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -127,7 +127,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_rkmo2")]
+"values": [ExtResource("4_u2nra")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -180,7 +180,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_0ylug")]
+"values": [ExtResource("3_6e5qw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -233,7 +233,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_0ylug")]
+"values": [ExtResource("3_6e5qw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -286,7 +286,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_xb18u")]
+"values": [ExtResource("5_cf7wp")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -339,7 +339,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_xb18u")]
+"values": [ExtResource("5_cf7wp")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -450,15 +450,15 @@ size = Vector2(10, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7ynk"]
 size = Vector2(21, 49)
 
-[node name="MilitaryUnit" type="Node2D"]
+[node name="Army" type="Node2D"]
 z_index = 2
-script = ExtResource("1_ncm6d")
+script = ExtResource("1_kncsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_vhnkh")
 position = Vector2(2, -10)
 scale = Vector2(0.78, 0.8)
-texture = ExtResource("2_0ylug")
+texture = ExtResource("3_6e5qw")
 hframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -497,4 +497,5 @@ collision_layer = 2
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_b7ynk")
 
+[connection signal="child_order_changed" from="." to="." method="_on_child_order_changed"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

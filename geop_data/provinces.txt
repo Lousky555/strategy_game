@@ -2,7 +2,7 @@
 "1ff329":{"name":"Czechia","id":"1","country":"AUH","terrain":"hills","population":"10000","buildings":{"farm":5,"food-factory":5,"coal-mine":5,"electronics-factory":4}},
 "#463ef3":{"name":"Bavaria","id":"2","country":"GER","terrain":"plains","population":"10000","buildings":{"farm":5,"food-factory":5,"lumber-mill":10,"electronics-factory":6}},
 "#2ad0c7":{"name":"Silesia","id":"3","country":"GER","terrain":"hills","population":"10000","buildings":{"farm":5,"school":5,"metal-mine":12,"steel-mill":4,"coal-mine":6}},
-"#9f9cd5":{"name":"Austria","id":"4","country":"AUH","terrain":"mountains","population":"10000","buildings":{"farm":5,"lumber-mill":10,"arms-factory":2,"barrack":1}},
+"#9f9cd5":{"name":"Austria","id":"4","country":"AUH","terrain":"mountains","population":"10000","buildings":{"farm":5,"lumber-mill":10,"arms-factory":2,"barrack":2}},
 "#d0b62a":{"name":"Slovakia","id":"5","country":"AUH","terrain":"plains","population":"10000","buildings":{"farm":5,"school":7,"metal-mine":4,"steel-mill":9}},
 "#d92926":{"name":"Tatry","id":"6","country":"AUH","terrain":"wasteland"},
 "#d726d9":{"name":"Hungary","id":"7","country":"AUH","terrain":"water"}
