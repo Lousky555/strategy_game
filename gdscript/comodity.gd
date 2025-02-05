@@ -4,8 +4,10 @@ class_name Commodity extends Node
 @export var prize: float
 @export var supply: float
 @export var demand: float
+@export var original_prize: float
 
 var current_amount: float = 0
+
 
 func buy(amount: float) -> float:
 	demand += amount
@@ -30,13 +32,13 @@ func _on_longer_tick() -> void:
 	if supply == 0 and demand == 0:
 		return
 	elif supply == 0:
-		prize = 100 * prize 
+		prize = 100 * original_prize
 		return
 	elif prize == 0:
 		prize = 0.01
 		return
 	
-	prize = prize * (demand/supply)
+	prize = original_prize * (demand/supply)
 	supply = 0 
 	demand = 0
 	

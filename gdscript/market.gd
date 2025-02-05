@@ -23,7 +23,6 @@ func _on_make_demand(building: Variant, commodity_name: String, amount: float, n
 	
 	if money_spend == 0:
 		return
-	
 	if need:
 		country.pay_consuption_tax(money_spend * country.consuption_tax_rate)
 	
@@ -49,7 +48,8 @@ func _ready() -> void:
 	for com_name in data:
 		var new_commodity = Commodity.new()
 		new_commodity.comodity_name = com_name
-		new_commodity.prize = int(data[com_name]["prize"])
+		new_commodity.original_prize = int(data[com_name]["prize"])
+		new_commodity.prize = new_commodity.original_prize
 		
 		commodities.get_or_add(com_name, new_commodity)
 		OuterSpace.add_child(new_commodity)
