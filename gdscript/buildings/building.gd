@@ -34,6 +34,10 @@ func _on_level_set(value):
 	hire_employees.emit(self)
 	level = value
 
+func _process(delta: float) -> void:
+	if money == NAN:
+		money = 0
+
 func buy_needs(money_availible:float) -> void:
 	var needs_bought = 0
 	for need:String in needs:

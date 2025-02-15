@@ -47,8 +47,7 @@ func load_provinces(info:Dictionary) -> void:
 				province = Wasteland.new()
 		
 		if province is not Wasteland:
-			province.province_selected.connect(Selector._on_province_selected)
-			province.province_deselected.connect(province_screen._on_province_deselected)
+			province.province_selected.connect(Player._on_province_selected)
 		
 		info[data[color]["country"]]["reference"].add_child(province)
 		if (province is not Wasteland) and (province is not Sea):
@@ -56,7 +55,7 @@ func load_provinces(info:Dictionary) -> void:
 		province.name = data[color]["name"]
 		province._make_area(polygons, info[data[color]["country"]]["color"])
 		province.center = get_center(polygons)
-		province.moving_detected.connect(Selector._on_movement_order)
+		province.moving_detected.connect(Player._on_movement_order)
 		if province is PopulatedProvince:
 			province.unemployed_population = province.population
 			province._make_buildings(data[color]["buildings"])

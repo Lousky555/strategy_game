@@ -4,7 +4,7 @@ var product:String
 var commodities_per_level:int
 
 func _work():
-	inventory[product] = commodities_per_level * level * efficency
+	inventory[product] += commodities_per_level * level * efficency
 
 func _on_tick() -> void:
 	buy_needs(money/2)

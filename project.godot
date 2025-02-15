@@ -23,7 +23,6 @@ OuterSpace="*res://gdscript/globals/outer_space.gd"
 Player="*res://gdscript/globals/player.gd"
 UiMake="*res://gdscript/globals/ui_maker.gd"
 Buildings="*res://gdscript/globals/buildings.gd"
-Selector="*res://gdscript/globals/selector.gd"
 
 [editor]
 

@@ -30,7 +30,7 @@ signal army_selected(unit:MilitaryUnit)
 @onready var label = $HBoxContainer/Label
 
 func _ready() -> void:
-	army_selected.connect(Selector._on_army_selected)
+	army_selected.connect(Player._on_army_selected)
 	state = IDLING
 	sprite.material.set_shader_parameter("width",  0)
 

@@ -12,8 +12,9 @@ extends PanelContainer
 var current_province:Node2D
 
 func _ready() -> void:
-	Selector.army_selected.connect(_on_army_selected)
-	Selector.province_update.connect(_on_province_update)
+	Player.army_selected.connect(_on_army_selected)
+	Player.province_update.connect(_on_province_update)
+	Player.everything_unselected.connect(_on_all_deselected)
 	construct_construction_ui()
 	army_ui.visible = false
 	province_ui.visible = false
@@ -37,7 +38,7 @@ func construct_construction_ui():
 	for building:String in Buildings.dict:
 		var button = UiMake.make_bulding_button(building, Buildings.get_building(building))
 		button.building_button_pressed.connect(_on_building_button_pressed)
-		button.building_button_pressed.connect(Selector._on_button_pressed)
+		button.building_button_pressed.connect(Player._on_button_pressed)
 		builder_ui.add_child(button)
 
 func _on_province_update(province:Node2D):
@@ -65,16 +66,8 @@ func _on_province_update(province:Node2D):
 	province_ui.visible = true
 	army_ui.visible = false 
 
-func  _on_province_deselected(province_name:String):
-	pass
-	#tato funkce je spravne udelana nechte ji byt
-
 func _on_building_button_pressed(building):
 	current_province._build_building(building, true)
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("esc"):
-		visible = false
 
 func _on_army_selected(army:Army):
 	for child in army_ui.get_children():
@@ -89,3 +82,7 @@ func _on_army_selected(army:Army):
 	
 	army_ui.visible = true
 	province_ui.visible = false
+
+func _on_all_deselected():
+	province_ui.visible = false
+	army_ui.visible = false

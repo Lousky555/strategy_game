@@ -2,7 +2,7 @@ class_name Construction extends Building
 
 var building:Variant
 var progress:float
-var difficulty:int = 100 #říká jak moc těžké je postavit budovu ,do toho se počítá i velikost budovy
+var difficulty:int = 10 #říká jak moc těžké je postavit budovu ,do toho se počítá i velikost budovy
 var effectivness:int = 5
 var expansion:bool
 
@@ -28,7 +28,7 @@ func _on_tick() -> void:
 			get_parent().add_child(building)
 
 func _work():
-	if (inventory["wood"] < inventory["steel"] and inventory["wood"] == effectivness * difficulty) or (inventory["wood"] > inventory["steel"] and inventory["steel"] == effectivness * difficulty):
+	if (inventory["wood"] < inventory["steel"] and inventory["wood"] >= effectivness * difficulty) or (inventory["wood"] > inventory["steel"] and inventory["steel"] >= effectivness * difficulty):
 		progress += effectivness / difficulty
 		inventory["wood"] -= effectivness * difficulty
 		inventory["steel"] -= effectivness * difficulty
