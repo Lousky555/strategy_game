@@ -9,6 +9,27 @@ extends Node2D
 @onready var consuption_tax_ui = $CanvasLayer/AspectRatioContainer/TopLine/Country/ConsuptionTax
 @onready var property_tax_ui = $CanvasLayer/AspectRatioContainer/TopLine/Country/PropertyTaxContainer
 
+func make_relations(country_array:Array, relation_array:Array, size:int\
+) -> void:
+	
+	
+	for i in range(country_array.size() - 1):
+		var relation = Relation.new()
+		relation.country_a = country_array[0]
+		relation_array.append(relation)
+		OuterSpace.add_child(relation)
+	
+	var k:int = relation_array.size() - 1
+	for i in range(size - country_array.size()):
+		k -= (country_array.size() - 1) + 2 * i
+		relation_array[k].country_b = country_array[0]
+	
+	country_array.pop_at(0)
+	if country_array != []: 
+		make_relations(country_array, relation_array, size)
+	else:
+		return
+
 func get_province_bitmap(map:Image, color:Color) -> BitMap:
 	var bitmap_image:Image = Image.create(map.get_width(), map.get_height(), false,Image.FORMAT_RGBA8)
 	
@@ -63,6 +84,7 @@ func load_provinces(info:Dictionary) -> void:
 func load_countries(info:Dictionary) -> Dictionary:
 	var data:Dictionary = FileSystem.import_file("res://geop_data/countries.txt")
 	var info_for_provinces:Dictionary = {}
+	var country_array = []
 	
 	for tag:String in data:
 		var new_country:Country = Country.new()
@@ -72,10 +94,12 @@ func load_countries(info:Dictionary) -> Dictionary:
 			if tag in info[market]:
 				market.add_child(new_country)
 		info_for_provinces.get_or_add(tag,{"reference":new_country,"color":data[tag]["color"]})
+		country_array.append(new_country)
 		
 		if tag == Player.country_tag:
 			Player.country = new_country
 	
+	make_relations(country_array, [], country_array.size())
 	return info_for_provinces
 
 func load_markets() -> Dictionary:
