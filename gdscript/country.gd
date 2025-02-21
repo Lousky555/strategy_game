@@ -14,6 +14,8 @@ class_name Country extends Node2D
 @export var population:int = 0
 @export var in_war:bool = false
 @export var relations:Array[Relation] = []
+@export var dip_mult:float = 1
+@export var reputation:int = 1
 
 signal on_money_change(value:float)
 signal income_tax_sup_change(value:float)
