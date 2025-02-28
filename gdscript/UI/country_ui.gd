@@ -19,13 +19,13 @@ func start():
 	Player.country.propery_tax_sup_change.connect(_propery_tax_sup_change)
 
 func _on_tick():
-	money_label.text = str(Player.country.money)
+	money_label.text = str(round(Player.country.money))
 
 func _consuption_tax_sup_change(value:float):
-	consuption_tax_surp.text = str(value)
+	consuption_tax_surp.text = str(round(value))
 
 func _income_tax_sup_change(value:float):
-	income_tax_surp.text = str(value)
+	income_tax_surp.text = str(round(value))
 
 func _propery_tax_sup_change(value:float):
-	propery_tax_surp.text = str(value)
+	propery_tax_surp.text = str(round(value))

@@ -7,8 +7,10 @@ func _make_buildings(data:Dictionary) -> void:
 	for building_name:String in data:
 		var new_building: Variant
 		new_building = Buildings.get_building(building_name).new()
-		new_building.level = data[building_name]
-		new_building.name = building_name.replace("-"," ")
+		new_building.level = data[building_name] 
+		var formated_string = String(building_name.replace("-"," "))
+		formated_string[0] = formated_string[0].capitalize()
+		new_building.name = formated_string
 		new_building.hire_employees.connect(_on_hire_employees)
 		add_child(new_building)
 

@@ -20,23 +20,25 @@ func _ready() -> void:
 	province_ui.visible = false
 
 func construct_building_ui(province:Node2D):
+	buildings_container.add_child(UiMake.make_label("Type"))
+	buildings_container.add_child(UiMake.make_label("Level"))
+	buildings_container.add_child(UiMake.make_label("Money"))
+	
 	for child:Node in province.get_children():
 		if child is Area2D or child is Polygon2D:
 			continue
 		
-		var hbox = HBoxContainer.new()
-		buildings_container.add_child(hbox)
-		
-		hbox.add_child(UiMake.make_label(child.name))
-		hbox.add_child(UiMake.make_label("Level:"))
-		hbox.add_child(UiMake.make_label(str(child.level)))
-		hbox.add_child(UiMake.make_label("Money:"))
-		hbox.add_child(UiMake.make_label(str(child.money)))
+		buildings_container.add_child(UiMake.make_label(child.name))
+		buildings_container.add_child(UiMake.make_label(str(child.level)))
+		buildings_container.add_child(UiMake.make_label(str(round(child.money))))
 	
 
 func construct_construction_ui():
 	for building:String in Buildings.dict:
-		var button = UiMake.make_bulding_button(building, Buildings.get_building(building))
+		var formated_string = building.to_snake_case()
+		formated_string = formated_string.replace("_"," ")
+		formated_string[0] = formated_string[0].capitalize()
+		var button = UiMake.make_bulding_button(formated_string, Buildings.get_building(building))
 		button.building_button_pressed.connect(_on_building_button_pressed)
 		button.building_button_pressed.connect(Player._on_button_pressed)
 		builder_ui.add_child(button)
@@ -77,7 +79,7 @@ func _on_army_selected(army:Army):
 	for unit in army.units:
 		var hbox = HBoxContainer.new()
 		army_ui.add_child(hbox)
-		hbox.add_child(UiMake.make_label("unit" + str(army.units.find(unit))))
+		hbox.add_child(UiMake.make_label("Unit " + str(army.units.find(unit) + 1)))
 		hbox.add_child(UiMake.make_label(str(unit.equipment)))
 	
 	army_ui.visible = true

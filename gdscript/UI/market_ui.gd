@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends GridContainer
 
 #Optimalizovat pokud budou problémy s výkonem
 
@@ -12,13 +12,13 @@ func _on_market_update(market:Market):
 		for child in children:
 			child.queue_free()
 		
+	add_child(UiMake.make_label("Commodity"))
+	add_child(UiMake.make_label("Price"))
+	
 	for key: String in market.commodities:
 		var com:Commodity = market.commodities[key]
-		var hbox: HBoxContainer = HBoxContainer.new()
-		add_child(hbox)
 		
-		hbox.add_child(UiMake.make_label(com.comodity_name.to_pascal_case()))
-		hbox.add_child(UiMake.make_label("Prize:"))
-		hbox.add_child(UiMake.make_label(str(com.prize)))
+		add_child(UiMake.make_label(com.comodity_name.to_pascal_case()))
+		add_child(UiMake.make_label(str(round(com.prize))))
 
 		

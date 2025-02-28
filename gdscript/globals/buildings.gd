@@ -23,5 +23,5 @@ func get_building(data:String):
 		data = data.to_pascal_case()
 	if data.contains("_"):
 		data = data.to_pascal_case()
-
+	
 	return dict[data]
