@@ -43,12 +43,14 @@ func _build_building(building:Variant, govermental:bool):
 		if child.get_script() == building:
 			if govermental:
 				var construction = GovermentConstruction.new(true, child)
-				construction.name = (Buildings.dict.find_key(building) + " construction")
+				construction.name = (UiMake.pascal_to_normal(\
+				Buildings.dict.find_key(building)) + " construction")
 				add_child(construction)
 				return
 	if govermental:
 		var construction = GovermentConstruction.new(false, building)
-		construction.name = (Buildings.dict.find_key(building) + " construction")
+		construction.name = (UiMake.pascal_to_normal(\
+		Buildings.dict.find_key(building)) + " construction")
 		add_child(construction)
 
 func _on_hire_employees(building:Node):

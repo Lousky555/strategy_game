@@ -8,9 +8,7 @@ func _make_buildings(data:Dictionary) -> void:
 		var new_building: Variant
 		new_building = Buildings.get_building(building_name).new()
 		new_building.level = data[building_name] 
-		var formated_string = String(building_name.replace("-"," "))
-		formated_string[0] = formated_string[0].capitalize()
-		new_building.name = formated_string
+		new_building.name = UiMake.pascal_to_normal(building_name)
 		new_building.hire_employees.connect(_on_hire_employees)
 		add_child(new_building)
 

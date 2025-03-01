@@ -18,7 +18,7 @@ func _on_market_update(market:Market):
 	for key: String in market.commodities:
 		var com:Commodity = market.commodities[key]
 		
-		add_child(UiMake.make_label(com.comodity_name.to_pascal_case()))
+		add_child(UiMake.make_label(UiMake.pascal_to_normal(com.comodity_name)))
 		add_child(UiMake.make_label(str(round(com.prize))))
 
 		

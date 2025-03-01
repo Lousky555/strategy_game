@@ -109,14 +109,20 @@ layout_mode = 2
 layout_mode = 2
 columns = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI"]
+[node name="BuildBuildingsButton" type="Button" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/ProvinceInfo"]
+layout_mode = 2
+toggle_mode = true
+text = "Build buildings"
+
+[node name="BuilderUICont" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI"]
+visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/BuilderUICont"]
 layout_mode = 2
-text = "Build buildings:"
+text = "Choose building:"
 
-[node name="BuilderUI" type="GridContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/VBoxContainer"]
+[node name="BuilderUI" type="GridContainer" parent="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/BuilderUICont"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -291,6 +297,7 @@ columns = 2
 script = ExtResource("14_e45ri")
 metadata/_tab_index = 1
 
+[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/ProvinceScreen/ProvinceUI/ProvinceInfo/BuildBuildingsButton" to="CanvasLayer/AspectRatioContainer/ProvinceScreen" method="_on_build_buildings_button_pressed"]
 [connection signal="visibility_changed" from="CanvasLayer/AspectRatioContainer/TopLine/Country" to="CanvasLayer/AspectRatioContainer/TopLine/Country" method="_on_visibility_changed"]
 [connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer/MinusButton2" to="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer" method="_on_minus_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer/PlusButton" to="CanvasLayer/AspectRatioContainer/TopLine/Country/IncomeTaxContainer" method="_on_plus_button_pressed"]
